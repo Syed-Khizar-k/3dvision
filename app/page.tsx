@@ -1,4 +1,5 @@
 import Counter from "@/components/Home/Counter";
+import Footer from "@/components/Home/Footer";
 import { HeroSection } from "@/components/Home/Hero";
 import { Navbar } from "@/components/Home/Navbar";
 import Services from "@/components/Home/Services";
@@ -20,6 +21,7 @@ export default function Home() {
    <div>
     <Services />
     <Counter />
+    <Footer/>
    </div>
   </div>
  );

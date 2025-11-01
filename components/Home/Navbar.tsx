@@ -119,8 +119,8 @@ export const Navbar: React.FC = () => {
     <Image
      src={"/images/logo.png"}
      alt={"3d vision edge"}
-     height={44}
-     width={100}
+     height={30}
+     width={70}
     />
    </div>
   </div>
@@ -146,7 +146,7 @@ export const Navbar: React.FC = () => {
      </div>
      <div className="hidden lg:flex lg:space-x-2 h-full items-center">
       <Link
-       href="tel:+15555551234"
+       href="tel:+923011463337"
        className={`ml-6 bg-(--color-secondary) text-white font-medium tracking-[0.4px] px-6 py-3 rounded-full shadow-lg transition-all duration-300 hover:bg-cyan-500 flex items-center space-x-2 text-md`}>
        <Phone size={18} />
        <span>Call Now</span>
@@ -156,7 +156,7 @@ export const Navbar: React.FC = () => {
      {/* Mobile Menu Toggle */}
      <button
       onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-      className={`text-white lg:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white`}
+      className={`text-(--color-secondary) lg:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white`}
       aria-label="Toggle menu">
       {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
      </button>
