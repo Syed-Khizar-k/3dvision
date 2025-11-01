@@ -58,7 +58,7 @@ export const HeroSection: React.FC = () => {
    {/* === TEXT OVERLAY === */}
    <div className="relative z-20 flex h-full items-center justify-center px-4 text-center">
     <h1 className="text-[24px] md:text-[32px] font-light tracking-[0.2px] text-white leading-snug drop-shadow-2xl">
-     3D Vision Edge <span className="text-(--color-primary)">|</span>{" "}
+     3D Vision Edge <span className="text-primary">|</span>{" "}
      <span
       style={{
        perspective: "1000px",
@@ -66,7 +66,7 @@ export const HeroSection: React.FC = () => {
       }}>
       <span
        key={currentIndex}
-       className="animate-bend text-(--color-primary) md:w-[100px]">
+       className="animate-bend text-primary md:w-[100px]">
        {texts[currentIndex]}
       </span>
      </span>

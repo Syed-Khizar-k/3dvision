@@ -80,7 +80,7 @@ const NavItemLink: React.FC<{
    onMouseLeave={() => item.hasDropdown && setIsDropdownOpen(false)}>
    <a
     href={item.href}
-    className={`flex items-center space-x-3  py-1 px-3 text-(--color-secondary) font-bold hover:border-b-2 hover:border-(--color-secondary)`}>
+    className={`flex items-center space-x-3  py-1 px-3 text-secondary font-bold hover:border-b-2 hover:border-secondary`}>
     <span>{item.name}</span>
     {item.hasDropdown && (
      <ChevronDown
@@ -129,7 +129,7 @@ export const Navbar: React.FC = () => {
  return (
   <header className={`fixed top-6 left-0 w-full z-50 px-6 `}>
    <nav
-    className={`max-w-4xl mx-auto px-2 sm:px-4 lg:px-2 h-16 flex items-center bg-(--color-primary) rounded-full`}>
+    className={`max-w-4xl mx-auto px-2 sm:px-4 lg:px-2 h-16 flex items-center bg-primary rounded-full`}>
     <div className="flex justify-between items-center w-full">
      {/* Logo Section */}
      <Link href={"/"} className="flex items-center h-full">
@@ -147,7 +147,7 @@ export const Navbar: React.FC = () => {
      <div className="hidden lg:flex lg:space-x-2 h-full items-center">
       <Link
        href="tel:+923011463337"
-       className={`ml-6 bg-(--color-secondary) text-white font-medium tracking-[0.4px] px-6 py-3 rounded-full shadow-lg transition-all duration-300 hover:bg-cyan-500 flex items-center space-x-2 text-md`}>
+       className={`ml-6 bg-secondary text-white font-medium tracking-[0.4px] px-6 py-3 rounded-full shadow-lg transition-all duration-300  flex items-center space-x-2 text-md`}>
        <Phone size={18} />
        <span>Call Now</span>
       </Link>
@@ -156,7 +156,7 @@ export const Navbar: React.FC = () => {
      {/* Mobile Menu Toggle */}
      <button
       onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-      className={`text-(--color-secondary) lg:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white`}
+      className={`text-secondary lg:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white`}
       aria-label="Toggle menu">
       {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
      </button>
