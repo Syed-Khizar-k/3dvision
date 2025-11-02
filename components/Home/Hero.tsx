@@ -4,8 +4,7 @@ import React, { useState, useEffect } from "react";
 
 export const HeroSection: React.FC = () => {
  // Use the local video path provided by the user
- const localVideoPath =
-  "https://github.com/Syed-Khizar-k/3dvision/blob/f18bb491c49ba36c1c2e4e3e678d6656d5ce4aa2/public/videos/header.MOV";
+ const localVideoPath = "/videos/headerVideo.mp4";
 
  const texts = ["Visualization", "Animation", "360°VR"];
  const [currentIndex, setCurrentIndex] = useState(0);
