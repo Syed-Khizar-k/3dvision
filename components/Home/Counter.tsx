@@ -1,6 +1,7 @@
 "use client";
 import { CheckSquare, Heart, Users, Trophy } from "lucide-react";
 import CountUpContent from "../utils/CountUpContent";
+import { motion } from "framer-motion";
 
 const CounterDefault = () => {
  const counters = [
@@ -33,7 +34,12 @@ const CounterDefault = () => {
     {counters && (
      <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
       {counters.map((item, num) => (
-       <div key={num}>
+       <motion.div
+        initial={{ opacity: 0, y: 200 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true }}
+        key={num}>
         <div className="group relative w-full text-center p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02] overflow-hidden">
          <span className="pointer-events-none absolute inset-0 bg-secondary opacity-0 scale-0 group-hover:opacity-90 group-hover:scale-110 transition duration-500 ease-out" />
          <div className="relative z-10">
@@ -53,7 +59,7 @@ const CounterDefault = () => {
           </div>
          </div>
         </div>
-       </div>
+       </motion.div>
       ))}
      </div>
     )}

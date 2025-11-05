@@ -13,6 +13,7 @@
  --color-primary: #cfd1da;
  --color-secondary: #828282;
  --color-three: #f5f5f5;
+ --color-heading: #461901;
 }
 
 @media (prefers-color-scheme: dark) {

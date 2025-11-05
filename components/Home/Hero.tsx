@@ -1,72 +1,118 @@
 "use client";
 import React, { useState, useEffect } from "react";
-// Assuming you meant to use a local or defined type
 
 export const HeroSection: React.FC = () => {
- // Use the local video path provided by the user
  const localVideoPath = "/videos/header.mp4";
-
  const texts = ["Visualization", "Animation", "360°VR"];
  const [currentIndex, setCurrentIndex] = useState(0);
+ const [isAnimating, setIsAnimating] = useState(false);
 
- // Interval for the text animation
  useEffect(() => {
-  const id = setInterval(() => {
-   setCurrentIndex((i) => (i + 1) % texts.length);
+  const interval = setInterval(() => {
+   setIsAnimating(true);
+
+   setTimeout(() => {
+    setCurrentIndex((prev) => (prev + 1) % texts.length);
+    setIsAnimating(false);
+   }, 700); // duration of flip
   }, 2500);
-  return () => clearInterval(id);
+
+  return () => clearInterval(interval);
  }, [texts.length]);
 
  return (
   <section className="relative w-full h-screen overflow-hidden bg-gray-900">
-   {/* === CUSTOM CSS FOR TEXT ANIMATION === */}
+   {/* === TEXT FALL-BACK ANIMATION === */}
    <style>
     {`
-          @keyframes bend {
-            0%, 100% { transform: perspective(1000px) rotateX(0deg); }
-            50% { transform: perspective(1000px) rotateX(-70deg); }
-          }
-          .animate-bend {
-            display: inline-block;
-            animation: bend 3s ease-in-out forwards;
-          }
-        `}
+  .flip-container {
+    display: inline-block;
+    perspective: 1000px;
+  }
+
+  .flip-word {
+    display: inline-block;
+    transform-style: preserve-3d;
+    transform-origin: bottom center;
+    transition: opacity 0.6s ease;
+  }
+
+  /* === Animation Keyframes === */
+  @keyframes flipFall {
+    0% {
+      transform: rotateX(0deg);
+      opacity: 1;
+    }
+    40% {
+      transform: rotateX(-60deg) translateY(-12px); /* tilt slightly forward */
+      opacity: 1;
+    }
+    100% {
+      transform: rotateX(80deg) translateY(10px); /* fall backward */
+      opacity: 0;
+    }
+  }
+
+  @keyframes flipRise {
+    0% {
+      transform: rotateX(-80deg) translateY(10px);
+      opacity: 0;
+    }
+    80% {
+      transform: rotateX(-20deg);
+      opacity: 1;
+    }
+    100% {
+      transform: rotateX(0deg);
+      opacity: 1;
+    }
+  }
+
+  /* === Animation Classes === */
+  .flip-word.falling {
+    animation: flipFall 0.7s cubic-bezier(0.4, 0.15, 0.2, 0.95) forwards;
+  }
+
+  .flip-word.rising {
+    animation: flipRise 0.7s cubic-bezier(0.4, 0.15, 0.2, 0.95) forwards;
+  }
+
+  .flip-word.active {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+`}
    </style>
 
    {/* === FULL-SCREEN BACKGROUND VIDEO === */}
-   {/* Container to handle the absolute positioning and clipping */}
    <div className="absolute inset-0 z-0 overflow-hidden">
     <video
-     className="min-w-full min-h-full w-auto h-auto object-cover absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+     className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto object-cover -translate-x-1/2 -translate-y-1/2"
      src={localVideoPath}
      autoPlay
      loop
      muted
-     playsInline // Essential for autoplay on mobile devices
-     title="Background Video">
-     {/* NOTE: For best browser compatibility (since .MOV is not universally supported), 
-            you should ideally provide an .MP4 (H.264) version here as well:
-            <source src="/videos/header.mp4" type="video/mp4" />
-          */}
+     playsInline
+     webkit-playsinline="true"
+     preload="auto"
+     disablePictureInPicture>
      Your browser does not support the video tag.
     </video>
    </div>
 
-   {/* Dark Overlay */}
+   {/* Overlay */}
    <div className="absolute inset-0 bg-black/40 z-10" />
 
    {/* === TEXT OVERLAY === */}
    <div className="relative z-20 flex h-full items-center justify-center px-4 text-center">
     <h1 className="text-[24px] md:text-[32px] font-light tracking-[0.2px] text-white leading-snug drop-shadow-2xl">
      3D Vision Edge <span className="text-primary">|</span>{" "}
-     <span
-      style={{
-       perspective: "1000px",
-       display: "inline-block",
-      }}>
+     <span className="flip-container">
       <span
        key={currentIndex}
-       className="animate-bend text-primary md:w-[100px]">
+       className={`flip-word text-primary md:w-[100px] ${
+        isAnimating ? "falling" : "rising"
+       }`}>
        {texts[currentIndex]}
       </span>
      </span>

@@ -1,8 +1,11 @@
+"use client";
 import Counter from "@/components/Home/Counter";
 import Footer from "@/components/Home/Footer";
 import { HeroSection } from "@/components/Home/Hero";
 import { Navbar } from "@/components/Home/Navbar";
+import Reviews from "@/components/Home/Reviews";
 import Services from "@/components/Home/Services";
+import WhyChoose from "@/components/Home/WhyChoose";
 
 import Image from "next/image";
 
@@ -21,7 +24,9 @@ export default function Home() {
    <div>
     <Services />
     <Counter />
-    <Footer/>
+    <WhyChoose />
+    <Reviews />
+    <Footer />
    </div>
   </div>
  );
