@@ -1,4 +1,4 @@
-"use client";
+import type { Metadata } from "next";
 import Counter from "@/components/Home/Counter";
 import Footer from "@/components/Home/Footer";
 import { HeroSection } from "@/components/Home/Hero";
@@ -6,8 +6,65 @@ import { Navbar } from "@/components/Home/Navbar";
 import Reviews from "@/components/Home/Reviews";
 import Services from "@/components/Home/Services";
 import WhyChoose from "@/components/Home/WhyChoose";
+import ContactUs from "@/components/Home/ContactUs";
+export const metadata: Metadata = {
+ title:
+  "Top Interior Design & Architechture company in Lahore | 3D Vision Edge",
+ description:
+  "3D Vision Edge offers premium interior design, architecture, and construction services in Lahore. We deliver high-quality, transparent, and affordable solutions.",
 
-import Image from "next/image";
+ // --- Canonical URL & Robots ---
+ metadataBase: new URL("https://3dvisionedge.com"),
+ alternates: {
+  canonical: "/",
+ },
+ robots: {
+  index: true,
+  follow: true,
+  googleBot: {
+   index: true,
+   follow: true,
+   "max-video-preview": -1,
+   "max-image-preview": "large",
+   "max-snippet": -1,
+  },
+ },
+
+ // --- Open Graph (for Social Sharing - Facebook, LinkedIn) ---
+ openGraph: {
+  title: "3D Vision Edge | Interior Design, Architecture & Construction",
+  description:
+   "Transforming spaces with high-quality, transparent, and affordable design and construction services in Lahore.",
+  url: "https://3dvisionedge.com",
+  siteName: "3D Vision Edge",
+  images: [
+   {
+    url: "https://3dvisionedge.com/images/social-preview.jpg", // You must create this image
+    width: 1200,
+    height: 630,
+    alt: "A stunning interior design project by 3D Vision Edge",
+   },
+  ],
+  locale: "en_US",
+  type: "website",
+ },
+
+ // --- Other Tags ---
+ keywords: [
+  "Interior Design Lahore",
+  "Interior Designers Lahore",
+  "Architechture company Lahore",
+  "Architecture Design Pakistan",
+  "3D Vision Edge",
+  "3d vision edge ",
+  "vision edge",
+  "Interior Decoration Lahore",
+  "Home Renovation Lahore",
+  "Commercial Interior Design",
+  "Furniture Design Lahore",
+ ],
+ authors: [{ name: "3D Vision Edge" }],
+};
 
 export default function Home() {
  return (
@@ -26,6 +83,7 @@ export default function Home() {
     <Counter />
     <WhyChoose />
     <Reviews />
+    <ContactUs />
     <Footer />
    </div>
   </div>

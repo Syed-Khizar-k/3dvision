@@ -1,169 +1,165 @@
+"use client";
 import { motion } from "framer-motion";
-import React from "react";
 
 // (Your cardData array remains the same)
 const cardData = [
-  {
-    id: 1,
-    title: "INTERIOR DESIGNERS IN LAHORE",
-    bodyHtml: `With our intellectually driven, dedicated team of artistic ideology and trained top interior designers in lahore, we endeavor to serve our clients with aesthetic design for project, <strong class="text-[var(--color-secondary)]">interior design services in lahore</strong> and architecture designs`, // Fixed class syntax
-    iconPath:
-      "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10",
-    link: "#",
-  },
-  {
-    id: 2,
-    title: "CONSTRUCTION",
-    bodyHtml: `We are proud <strong class="text-[var(--color-secondary)]">construction company in lahore</strong>. We execute construction projects with professional and advanced solutions in the most desirable duration with design excellence and building quality, making your home more luxurious.`, // Fixed class syntax
-    iconPath:
-      "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 0h-1m1 0v4m-1-4h-1m1 0v4m-1-4V7h-1m1 0v4m-1-4V7h-1m1 0V7m-1 0V7m-1 0V7m-1 0V7M7 7h1m-1 0v4m-1-4h-1m1 0v4m-1-4V7h-1m1 0v4m-1-4V7h-1m1 0V7m-1 0V7m-1 0V7m-1 0V7M12 7h1m-1 0v4m-1-4h-1m1 0v4m-1-4V7h-1m1 0v4m-1-4V7h-1m1 0V7m-1 0V7m-1 0V7M7 11h1m-1 0v4m-1-4h-1m1 0v4m-1-4V11h-1m1 0v4m-1-4V11h-1m1 0v4m-1-4V11M12 11h1m-1 0v4m-1-4h-1m1 0v4m-1-4V11h-1m1 0v4m-1-4V11h-1m1 0v4m-1-4V11M7 15h1m-1 0v4m-1-4h-1m1 0v4m-1-4V15h-1m1 0v4m-1-4V15h-1m1 0v4m-1-4V15M12 15h1m-1 0v4m-1-4h-1m1 0v4m-1-4V15h-1m1 0v4m-1-4V15h-1m1 0v4m-1-4V15",
-    link: "#",
-  },
-  {
-    id: 3,
-    title: "ARCHITECTURE DESIGN",
-    bodyHtml: `Spacesnplaces is the top architect design company in lahore, Pakistan. At <strong class="text-[var(--color-secondary)]">spaces&places</strong>, we distinguish ourselves by providing architectural designs for houses and offices.`, // Fixed class syntax
-    iconPath:
-      "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
-    link: "#",
-  },
-  {
-    id: 4,
-    title: "FURNITURE",
-    bodyHtml: `Matching international standards, our <strong class="text-[var(--color-secondary)]">furniture services in Lahore</strong> focus on designing high-end contemporary and classic pieces with customization options, delivering supreme quality furniture built to last.`, // Fixed class syntax
-    iconPath:
-      "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10",
-    link: "#",
-  },
+ {
+  id: 1,
+  title: "INTERIOR DESIGNERS IN LAHORE",
+  bodyHtml: `With our intellectually driven, dedicated team of artistic ideology and trained top interior designers in lahore, we endeavor to serve our clients with aesthetic design for project, <strong class="text-[var(--color-secondary)]">interior design services in lahore</strong> and architecture designs`, // Fixed class syntax
+  iconPath:
+   "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10",
+  link: "#",
+ },
+ {
+  id: 2,
+  title: "CONSTRUCTION",
+  bodyHtml: `We are proud <strong class="text-(--color-secondary)">construction company in lahore</strong>. We execute construction projects with professional and advanced solutions in the most desirable duration with design excellence and building quality, making your home more luxurious.`, // Fixed class syntax
+  iconPath:
+   "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 0h-1m1 0v4m-1-4h-1m1 0v4m-1-4V7h-1m1 0v4m-1-4V7h-1m1 0V7m-1 0V7m-1 0V7m-1 0V7M7 7h1m-1 0v4m-1-4h-1m1 0v4m-1-4V7h-1m1 0v4m-1-4V7h-1m1 0V7m-1 0V7m-1 0V7m-1 0V7M12 7h1m-1 0v4m-1-4h-1m1 0v4m-1-4V7h-1m1 0v4m-1-4V7h-1m1 0V7m-1 0V7m-1 0V7M7 11h1m-1 0v4m-1-4h-1m1 0v4m-1-4V11h-1m1 0v4m-1-4V11h-1m1 0v4m-1-4V11M12 11h1m-1 0v4m-1-4h-1m1 0v4m-1-4V11h-1m1 0v4m-1-4V11h-1m1 0v4m-1-4V11M7 15h1m-1 0v4m-1-4h-1m1 0v4m-1-4V15h-1m1 0v4m-1-4V15h-1m1 0v4m-1-4V15M12 15h1m-1 0v4m-1-4h-1m1 0v4m-1-4V15h-1m1 0v4m-1-4V15h-1m1 0v4m-1-4V15",
+  link: "#",
+ },
+ {
+  id: 3,
+  title: "ARCHITECTURE DESIGN",
+  bodyHtml: `Spacesnplaces is the top architect design company in lahore, Pakistan. At <strong class="text-(--color-secondary)">spaces&places</strong>, we distinguish ourselves by providing architectural designs for houses and offices.`, // Fixed class syntax
+  iconPath:
+   "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
+  link: "#",
+ },
+ {
+  id: 4,
+  title: "FURNITURE",
+  bodyHtml: `Matching international standards, our <strong class="text-(--color-secondary)">furniture services in Lahore</strong> focus on designing high-end contemporary and classic pieces with customization options, delivering supreme quality furniture built to last.`, // Fixed class syntax
+  iconPath:
+   "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10",
+  link: "#",
+ },
 ];
 
 // --- 1. Define Animation Variants ---
 
 // Variant for the black overlay
 const overlayVariants = {
-  rest: {
-    x: "-100%", // Start fully to the left
-  },
-  hover: {
-    x: "0%", // Animate to fill the card
-  },
+ rest: {
+  x: "-100%", // Start fully to the left
+ },
+ hover: {
+  x: "0%", // Animate to fill the card
+ },
 };
 
 // Variant for the text color change
 const textVariants = {
-  rest: {
-    color: "#4b5563", // text-gray-600
-  },
-  hover: {
-    color: "var(--color-secondary)", // Your custom secondary color
-  },
+ rest: {
+  color: "#4b5563", // text-gray-600
+ },
+ hover: {
+  color: "var(--color-secondary)", // Your custom secondary color
+ },
 };
 
 // Variant for the title text color change (using a darker gray)
 const titleVariants = {
-  rest: {
-    color: "#1f2937", // text-gray-800
-  },
-  hover: {
-    color: "var(--color-secondary)", // Your custom secondary color
-  },
+ rest: {
+  color: "#1f2937", // text-gray-800
+ },
+ hover: {
+  color: "var(--color-secondary)", // Your custom secondary color
+ },
 };
 
 const Services = () => {
-  // NOTE: I also fixed your custom CSS variable classes
-  // from text-(--color-secondary) to text-[var(--color-secondary)]
-  // which is the correct Tailwind syntax.
+ // NOTE: I also fixed your custom CSS variable classes
+ // from text-(--color-secondary) to text-[var(--color-secondary)]
+ // which is the correct Tailwind syntax.
 
-  return (
-    <section className="py-10 w-full bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-10">
-          <p className="text-lg font-medium text-secondary uppercase tracking-wider">
-            Services
-          </p>
-          <h2 className="text-[36px] md:text-[40px] font-bold text-heading mb-4">
-            Our Services that Defines us
-          </h2>
-          <p className="text-lg text-[var(--color-secondary)] md:text-md">
-            Our commitment to quality products and on time services ensure our
-            clients <br />
-            happy. We’re happy to make you feel more comfortable on your home.
-          </p>
-        </div>
+ return (
+  <section className="py-10 w-full bg-white">
+   <div className="container mx-auto px-4">
+    <div className="text-center mb-10">
+     <p className="text-lg font-medium text-secondary uppercase tracking-wider">
+      Services
+     </p>
+     <h2 className="text-[36px] md:text-[40px] font-bold text-heading mb-4">
+      Our Services that Defines us
+     </h2>
+     <p className="text-lg text-(--color-secondary) md:text-md">
+      Our commitment to quality products and on time services ensure our clients{" "}
+      <br />
+      happy. We’re happy to make you feel more comfortable on your home.
+     </p>
+    </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {cardData.map((card) => (
-            <motion.div
-              // Scroll-in animation (as you had before)
-              initial={{ opacity: 0, y: 150 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              viewport={{ once: true }}
-              
-              // --- 2. Add Hover Animation Control ---
-              // These props control the hover state for mobile and desktop
-              animate="rest" // Set the default animation state
-              whileHover="hover" // Set the state to animate to on hover/tap
-              
-              key={card.id}
-              // Removed 'group' class, as Framer Motion is handling the state
-              className="bg-[var(--color-three)] p-8 relative z-0 rounded-3xl shadow-sm h-full w-full border-b-6 border-[var(--color-secondary)] overflow-hidden"
-            >
-              {/* Black overlay that slides from left to right */}
-              <motion.div
-                className="absolute inset-0 bg-[var(--color-primary)] rounded-lg pointer-events-none z-[-1]"
-                // Apply the overlay variants
-                variants={overlayVariants}
-                // Set the transition for this specific animation
-                transition={{ duration: 1, ease: "easeOut" }}
-                // Removed: transform, -translate-x-full, group-hover:translate-x-0, transition-transform, duration-1000
-              />
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+     {cardData.map((card) => (
+      <motion.div
+       // Scroll-in animation (as you had before)
+       initial={{ opacity: 0, y: 150 }}
+       whileInView={{ opacity: 1, y: 0 }}
+       transition={{ duration: 1, ease: "easeOut" }}
+       viewport={{ once: true }}
+       // --- 2. Add Hover Animation Control ---
+       // These props control the hover state for mobile and desktop
+       animate="rest" // Set the default animation state
+       whileHover="hover" // Set the state to animate to on hover/tap
+       key={card.id}
+       // Removed 'group' class, as Framer Motion is handling the state
+       className="bg-(--color-three) p-8 relative z-0 rounded-3xl shadow-sm h-full w-full border-b-6 border-(--color-secondary) overflow-hidden">
+       {/* Black overlay that slides from left to right */}
+       <motion.div
+        className="absolute inset-0 bg-(--color-primary) rounded-lg pointer-events-none z-[-1]"
+        // Apply the overlay variants
+        variants={overlayVariants}
+        // Set the transition for this specific animation
+        transition={{ duration: 1, ease: "easeOut" }}
+        // Removed: transform, -translate-x-full, group-hover:translate-x-0, transition-transform, duration-1000
+       />
 
-              {/* Icon Container */}
-              <div className="flex items-center justify-center h-16 w-16 rounded-full bg-white mb-6">
-                <svg
-                  className="h-8 w-8 text-[var(--color-secondary)]"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d={card.iconPath}
-                  />
-                </svg>
-              </div>
+       {/* Icon Container */}
+       <div className="flex items-center justify-center h-16 w-16 rounded-full bg-white mb-6">
+        <svg
+         className="h-8 w-8 text-(--color-secondary)"
+         fill="none"
+         viewBox="0 0 24 24"
+         stroke="currentColor">
+         <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d={card.iconPath}
+         />
+        </svg>
+       </div>
 
-              {/* Title */}
-              <motion.h3
-                className="text-xl font-semibold mb-3"
-                // Apply the title text variants
-                variants={titleVariants}
-                // Set the transition for the color change
-                transition={{ duration: 0.3 }}
-                // Removed: text-gray-800, group-hover:text-[var(--color-secondary)], transition-colors, duration-300
-              >
-                {card.title}
-              </motion.h3>
+       {/* Title */}
+       <motion.h3
+        className="text-xl font-semibold mb-3"
+        // Apply the title text variants
+        variants={titleVariants}
+        // Set the transition for the color change
+        transition={{ duration: 0.3 }}
+        // Removed: text-gray-800, group-hover:text-[var(--color-secondary)], transition-colors, duration-300
+       >
+        {card.title}
+       </motion.h3>
 
-              {/* Body Content */}
-              <motion.p
-                className="mb-6"
-                // Apply the body text variants
-                variants={textVariants}
-                // Set the transition for the color change
-                transition={{ duration: 0.3 }}
-                dangerouslySetInnerHTML={{ __html: card.bodyHtml }}
-                // Removed: text-gray-600, group-hover:text-[var(--color-secondary)], transition-colors, duration-300
-              />
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+       {/* Body Content */}
+       <motion.p
+        className="mb-6"
+        // Apply the body text variants
+        variants={textVariants}
+        // Set the transition for the color change
+        transition={{ duration: 0.3 }}
+        dangerouslySetInnerHTML={{ __html: card.bodyHtml }}
+        // Removed: text-gray-600, group-hover:text-[var(--color-secondary)], transition-colors, duration-300
+       />
+      </motion.div>
+     ))}
+    </div>
+   </div>
+  </section>
+ );
 };
 
 export default Services;

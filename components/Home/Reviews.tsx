@@ -240,7 +240,7 @@ const TestimonialCarousel: React.FC = () => {
 
     {/* Carousel Viewport */}
     <motion.div
-     initial={{ opacity: 0, y: 300 }}
+     initial={{ opacity: 0, y: 200 }}
      whileInView={{ opacity: 1, y: 0 }}
      transition={{ duration: 0.6, ease: "easeOut" }}
      viewport={{ once: true }}

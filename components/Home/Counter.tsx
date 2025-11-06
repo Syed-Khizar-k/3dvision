@@ -6,54 +6,61 @@ import { motion } from "framer-motion";
 const CounterDefault = () => {
  const counters = [
   {
-   Icon: CheckSquare, // Lucide Component
-   countNum: 85,
+   Icon: CheckSquare,
+   countNum: 135,
    countTitle: "Project Complete",
   },
   {
-   Icon: Heart, // Lucide Component
+   Icon: Heart,
    countNum: 80,
    countTitle: "Happy Clients",
   },
   {
-   Icon: Users, // Lucide Component
+   Icon: Users,
    countNum: 7,
    countTitle: "Years of Experience",
   },
   {
-   Icon: Trophy, // Lucide Component
+   Icon: Trophy,
    countNum: 5,
    countTitle: "Active Projects",
   },
  ];
 
  return (
-  // Converted: counter-area bg-(--color-three)
-  <div className="py-20 w-full bg-three">
-   <div className="container mx-auto">
+  <section
+   className="relative py-40 w-full bg-fixed bg-center bg-cover bg-no-repeat"
+   style={{
+    backgroundImage: "url('/images/experience.webp')", // ⬅️ Replace with your actual image path
+   }}>
+   {/* Black Overlay */}
+   <div className="absolute inset-0 bg-black/30 z-0"></div>
+
+   {/* Counter Content */}
+   <div className="container mx-auto relative z-10">
     {counters && (
      <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
       {counters.map((item, num) => (
        <motion.div
+        key={num}
         initial={{ opacity: 0, y: 200 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        viewport={{ once: true }}
-        key={num}>
-        <div className="group relative w-full text-center p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02] overflow-hidden">
-         <span className="pointer-events-none absolute inset-0 bg-secondary opacity-0 scale-0 group-hover:opacity-90 group-hover:scale-110 transition duration-500 ease-out" />
+        viewport={{ once: true }}>
+        <div className="group relative w-full text-center p-8 bg-white/10 backdrop-blur-xs rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02] overflow-hidden border border-white/20">
+         <span className="pointer-events-none absolute inset-0 bg-(--color-secondary) opacity-0 scale-0 group-hover:opacity-90 group-hover:scale-110 transition duration-500 ease-out" />
          <div className="relative z-10">
-          <div className="text-secondary mb-4 flex justify-center group-hover:text-white transition-colors duration-300">
+          <div className="text-gray-200 mb-4 flex justify-center group-hover:text-white transition-colors duration-300">
            <item.Icon className="w-8 h-8" strokeWidth={1.5} />
           </div>
           <div className="mt-4">
-           <h1 className="text-[18px] md:text-[32px] font-bold text-secondary flex justify-center items-center group-hover:text-white transition-colors duration-300">
+           <h1 className="text-[18px] md:text-[32px] font-bold text-gray-200 flex justify-center items-center group-hover:text-white transition-colors duration-300">
             <CountUpContent number={item.countNum} text="" />
-            <span className="text-secondary text-3xl ml-2 group-hover:text-white transition-colors duration-300">
+            <span className="text-gray-200 text-3xl ml-2 group-hover:text-white transition-colors duration-300">
              +
             </span>
            </h1>
-           <p className="text-lg font-medium text-gray-600 mt-1 group-hover:text-white transition-colors duration-300">
+           <p className="text-lg font-medium text-gray-200 mt-1 group-hover:text-white transition-colors duration-300">
             {item.countTitle}
            </p>
           </div>
@@ -64,7 +71,7 @@ const CounterDefault = () => {
      </div>
     )}
    </div>
-  </div>
+  </section>
  );
 };
 

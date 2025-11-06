@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
  title: "3D Vision Edge",
- description: "#1 3D Visualizers in Lahore",
+ description: "#No.1 3D Visualizers in Lahore Pakistan",
 };
 
 export default function RootLayout({
