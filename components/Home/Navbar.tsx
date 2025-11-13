@@ -156,7 +156,7 @@ export const Navbar: React.FC = () => {
      {/* Mobile Menu Toggle */}
      <button
       onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-      className={`text-secondary lg:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white`}
+      className={`text-secondary lg:hidden p-2 rounded-md `}
       aria-label="Toggle menu">
       {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
      </button>
@@ -165,7 +165,7 @@ export const Navbar: React.FC = () => {
 
    {/* Mobile Menu Panel */}
    <div
-    className={`lg:hidden transition-all duration-300 ease-in-out bg-gray-900 overflow-hidden ${
+    className={`lg:hidden transition-all rounded-3xl mt-2 duration-300 ease-in-out bg-gray-900 overflow-hidden ${
      isMobileMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
     }`}
     style={{ transitionProperty: "max-height, opacity" }}>
@@ -174,11 +174,15 @@ export const Navbar: React.FC = () => {
       <NavItemLink key={item.name} item={item} isMobile={true} />
      ))}
      {/* Mobile CTA */}
-     <a
-      href="#quote"
-      className={`block text-center mx-4 my-2 bg-cyan-400 text-gray-900 font-bold px-4 py-3 rounded-full transition-all duration-300`}>
-      Get A Quote
-     </a>
+
+     <div className="flex w-full ">
+      <Link
+      href="tel:+923011463337"
+      className={`mx-6 max-md:w-full bg-secondary text-white font-medium tracking-[0.4px] px-6 py-3 rounded-full shadow-lg transition-all duration-300  flex items-center justify-center space-x-2 text-md`}>
+      <Phone size={18} />
+      <span>Call Now</span>
+     </Link>
+     </div>
     </div>
    </div>
   </header>

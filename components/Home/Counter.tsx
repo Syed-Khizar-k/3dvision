@@ -47,8 +47,8 @@ const CounterDefault = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true }}>
-        <div className="group relative w-full text-center p-8 bg-white/10 backdrop-blur-xs rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02] overflow-hidden border border-white/20">
-         <span className="pointer-events-none absolute inset-0 bg-(--color-secondary) opacity-0 scale-0 group-hover:opacity-90 group-hover:scale-110 transition duration-500 ease-out" />
+        <div className="group cursor-pointer relative w-full text-center p-8 bg-white/10 backdrop-blur-xs rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02] overflow-hidden border border-white/20">
+         <span className="pointer-events-none absolute inset-0 bg-white/10 backdrop-blur-3xl  opacity-0 scale-0 group-hover:opacity-90 group-hover:scale-110 transition duration-500 ease-out" />
          <div className="relative z-10">
           <div className="text-gray-200 mb-4 flex justify-center group-hover:text-white transition-colors duration-300">
            <item.Icon className="w-8 h-8" strokeWidth={1.5} />

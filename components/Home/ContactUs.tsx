@@ -1,8 +1,43 @@
 "use client";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
 
 const ContactUs = () => {
+ const [status, setStatus] = useState("idle");
+ const [errorMsg, setErrorMsg] = useState("");
+
+ const handleSubmit = async (e:any) => {
+  e.preventDefault();
+  setStatus("loading");
+  setErrorMsg("");
+
+  const formData = new FormData(e.target);
+  const payload = Object.fromEntries(formData.entries());
+
+  try {
+   const res = await fetch("http://127.0.0.1:8000/api/contact/", {
+    method: "POST",
+    headers: {
+     "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+   });
+
+   if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    setErrorMsg(data.error || "Something went wrong.");
+    setStatus("error");
+    return;
+   }
+
+   setStatus("success");
+   e.target.reset();
+  } catch (err) {
+   setErrorMsg("Network error. Please try again.");
+   setStatus("error");
+  }
+ };
  return (
   <section
    className="relative w-full py-20 bg-fixed bg-center bg-cover bg-no-repeat"
@@ -52,34 +87,32 @@ const ContactUs = () => {
      viewport={{ once: true }}
      className="md:w-1/2 w-full">
      <form
-      action="submit"
+      onSubmit={handleSubmit}
       className="bg-white/10 backdrop-blur-xs p-6 md:p-8 rounded-2xl border border-white/20 shadow-lg">
       {/* Name & Email */}
       <div className="flex flex-col md:flex-row md:gap-6">
        <div className="mb-4 md:w-1/2">
-        <label htmlFor="name" className="block text-white mb-2 font-medium">
+        <label className="block text-white mb-2 font-medium">
          Name <span className="text-red-500">*</span>
         </label>
         <input
          type="text"
-         id="name"
          name="name"
          required
-         className="w-full p-3 rounded-xl bg-white/20 text-white placeholder-gray-300 border border-gray-400/40 focus:border-[var(--color-secondary)] focus:ring-2 focus:ring-[var(--color-secondary)] focus:outline-none transition"
+         className="w-full p-3 rounded-xl bg-white/20 text-white placeholder-gray-300 border border-gray-400/40"
          placeholder="Enter your name"
         />
        </div>
 
        <div className="mb-4 md:w-1/2">
-        <label htmlFor="email" className="block text-white mb-2 font-medium">
+        <label className="block text-white mb-2 font-medium">
          Email <span className="text-red-500">*</span>
         </label>
         <input
          type="email"
-         id="email"
          name="email"
          required
-         className="w-full p-3 rounded-xl bg-white/20 text-white placeholder-gray-300 border border-gray-400/40 focus:border-[var(--color-secondary)] focus:ring-2 focus:ring-[var(--color-secondary)] focus:outline-none transition"
+         className="w-full p-3 rounded-xl bg-white/20 text-white placeholder-gray-300 border border-gray-400/40"
          placeholder="Enter your email"
         />
        </div>
@@ -87,15 +120,14 @@ const ContactUs = () => {
 
       {/* Phone */}
       <div className="mb-4">
-       <label htmlFor="phone" className="block text-white mb-2 font-medium">
+       <label className="block text-white mb-2 font-medium">
         Phone <span className="text-red-500">*</span>
        </label>
        <input
-        type="tel"
-        id="phone"
+        type="text"
         name="phone"
         required
-        className="w-full p-3 rounded-xl bg-white/20 text-white placeholder-gray-300 border border-gray-400/40 focus:border-[var(--color-secondary)] focus:ring-2 focus:ring-[var(--color-secondary)] focus:outline-none transition"
+        className="w-full p-3 rounded-xl bg-white/20 text-white placeholder-gray-300 border border-gray-400/40"
         placeholder="Enter your phone number"
        />
       </div>
@@ -103,29 +135,22 @@ const ContactUs = () => {
       {/* Company & Project Type */}
       <div className="flex flex-col md:flex-row md:gap-6">
        <div className="mb-4 md:w-1/2">
-        <label htmlFor="company" className="block text-white mb-2 font-medium">
-         Company
-        </label>
+        <label className="block text-white mb-2 font-medium">Company</label>
         <input
          type="text"
-         id="company"
          name="company"
-         className="w-full p-3 rounded-xl bg-white/20 text-white placeholder-gray-300 border border-gray-400/40 focus:border-[var(--color-secondary)] focus:ring-2 focus:ring-[var(--color-secondary)] focus:outline-none transition"
+         className="w-full p-3 rounded-xl bg-white/20 text-white placeholder-gray-300 border border-gray-400/40"
          placeholder="Your company name"
         />
        </div>
 
        <div className="mb-4 md:w-1/2">
-        <label
-         htmlFor="project-type"
-         className="block text-white mb-2 font-medium">
+        <label className="block text-white mb-2 font-medium">
          Project Type
         </label>
         <select
-         id="project-type"
          name="project-type"
-         required
-         className="w-full p-3 rounded-xl bg-white/20 text-white border border-gray-400/40 focus:border-[var(--color-secondary)] focus:ring-2 focus:ring-[var(--color-secondary)] focus:outline-none transition">
+         className="w-full p-3 rounded-xl bg-white/20 text-white border border-gray-400/40">
          <option value="">Select Project Type</option>
          <option value="residential">Residential</option>
          <option value="commercial">Commercial</option>
@@ -136,23 +161,28 @@ const ContactUs = () => {
 
       {/* Message */}
       <div className="mb-6">
-       <label htmlFor="message" className="block text-white mb-2 font-medium">
-        Message
-       </label>
+       <label className="block text-white mb-2 font-medium">Message</label>
        <textarea
-        id="message"
         name="message"
         rows={4}
-        className="w-full p-3 rounded-xl bg-white/20 text-white placeholder-gray-300 border border-gray-400/40 focus:border-[var(--color-secondary)] focus:ring-2 focus:ring-[var(--color-secondary)] focus:outline-none transition"
+        required
+        className="w-full p-3 rounded-xl bg-white/20 text-white placeholder-gray-300 border border-gray-400/40"
         placeholder="Write your message here..."
-        required></textarea>
+       />
       </div>
 
-      {/* Submit Button */}
+      {/* Status message */}
+      {status === "success" && (
+       <p className="text-green-300 mb-2">✔ Message sent successfully!</p>
+      )}
+      {status === "error" && <p className="text-red-300 mb-2">❌ {errorMsg}</p>}
+
+      {/* Button */}
       <button
        type="submit"
-       className="w-full cursor-pointer bg-(--color-secondary) hover:bg-(--color-primary) text-white font-semibold py-3 rounded-xl transition duration-300">
-       Submit
+       disabled={status === "loading"}
+       className="w-full bg-(--color-secondary) hover:bg-(--color-primary) disabled:opacity-50 text-white font-semibold py-3 rounded-xl transition">
+       {status === "loading" ? "Sending..." : "Submit"}
       </button>
      </form>
     </motion.div>

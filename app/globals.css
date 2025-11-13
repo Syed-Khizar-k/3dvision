@@ -1,3 +1,5 @@
+@import "locomotive-scroll/dist/locomotive-scroll.css";
+
 @import "tailwindcss";
 
 :root {
@@ -14,6 +16,7 @@
  --color-secondary: #828282;
  --color-three: #f5f5f5;
  --color-heading: #461901;
+ --opacity-color: 70, 25, 1;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -32,4 +35,19 @@ body {
  max-width: 1200px;
  margin: 0 auto;
  padding: 0 20px;
+}
+.text-reveal {
+ display: inline;
+ background: linear-gradient(
+  to right,
+  rgba(var(--opacity-color), 1) 0%,
+  rgba(var(--opacity-color), 1) 50%,
+  rgba(var(--opacity-color), 0.2) 50%,
+  rgba(var(--opacity-color), 0.2) 100%
+ );
+ background-clip: text;
+ background-size: 200% 100%;
+ background-position: right bottom;
+ color: transparent;
+ background-repeat: no-repeat;
 }

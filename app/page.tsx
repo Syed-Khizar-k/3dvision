@@ -7,6 +7,7 @@ import Reviews from "@/components/Home/Reviews";
 import Services from "@/components/Home/Services";
 import WhyChoose from "@/components/Home/WhyChoose";
 import ContactUs from "@/components/Home/ContactUs";
+import Intro from "@/components/Home/Intro";
 export const metadata: Metadata = {
  title:
   "Top Interior Design & Architechture company in Lahore | 3D Vision Edge",
@@ -75,10 +76,8 @@ export default function Home() {
    {/* 2. Full-Screen Hero Section */}
    <HeroSection />
 
-   {/* This is a placeholder for content that would appear below the full-screen hero.
-        Scroll down to see it.
-      */}
    <div>
+    <Intro />
     <Services />
     <Counter />
     <WhyChoose />

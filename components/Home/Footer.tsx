@@ -45,7 +45,7 @@ const contactInfo = [
   content: "0301 1463337",
  },
  {
-  icon: <MdEmail className="text-white text-2xl" />,
+  icon: <MdEmail className="text-white text-2xl" /> ,
   title: "Email",
   content: "furqan4479@gmail.com",
  },
