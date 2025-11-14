@@ -101,7 +101,7 @@ const ContactUs = () => {
 
     {/* RIGHT SIDE FORM */}
     <motion.div
-     initial={{ opacity: 0, y: 200 }}
+     initial={{ opacity: 0, y: 100 }}
      whileInView={{ opacity: 1, y: 0 }}
      transition={{ duration: 0.6, ease: "easeOut" }}
      viewport={{ once: true }}
@@ -177,12 +177,35 @@ const ContactUs = () => {
         <select
          value={projectType}
          onChange={(e) => setProjectType(e.target.value)}
-         name="project-type"
-         className="w-full p-3 rounded-xl bg-white/20 text-white border border-gray-400/40">
-         <option value="">Select Project Type</option>
-         <option value="residential">Residential</option>
-         <option value="commercial">Commercial</option>
-         <option value="industrial">Industrial</option>
+         name="projectType"
+         className="
+    w-full 
+    p-3 
+    rounded-xl
+    bg-white/20 
+    text-white 
+    border border-gray-400/40 
+    appearance-none 
+    focus:outline-none 
+    focus:ring-2 
+    focus:ring-white/40
+  "
+         style={{
+          backgroundColor: "rgba(255, 255, 255, 0.2)",
+          color: "white",
+         }}>
+         <option className="text-black" value="">
+          Select Project Type
+         </option>
+         <option className="text-black" value="residential">
+          Residential
+         </option>
+         <option className="text-black" value="commercial">
+          Commercial
+         </option>
+         <option className="text-black" value="industrial">
+          Industrial
+         </option>
         </select>
        </div>
       </div>
@@ -212,7 +235,7 @@ const ContactUs = () => {
        onClick={handleSubmit}
        type="submit"
        disabled={status === "loading"}
-       className="w-full bg-secondary disabled:opacity-50 text-white font-semibold py-3 rounded-xl transition">
+       className="w-full bg-secondary cursor-pointer disabled:opacity-50 text-white font-semibold py-3 rounded-xl transition">
        {status === "loading" ? "Submitting..." : "Submit"}
       </button>
      </form>
