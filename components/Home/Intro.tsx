@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Phone } from "lucide-react";
 function Intro() {
  return (
-  <section className="md:pt-[140px] md:pb-[100px] pt-[100px] pb-[50px] w-full bg-white">
+  <section className="md:pt-[140px] md:pb-10 pt-[100px] pb-[50px] w-full bg-white">
    <div className="container mx-auto px-4">
     <h1 className="text-heading px-4 text-[28px] leading-[33px]  md:px-[100px] md:text-[52px] md:leading-[58px] font-bold tracking-[-1px] text-center capitalize">
      {" "}

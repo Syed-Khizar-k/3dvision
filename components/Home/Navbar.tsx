@@ -11,9 +11,9 @@ const PRIMARY_COLOR = "bg-[#A68C68]";
 const TEXT_COLOR = "text-[#2e3535]";
 
 const navItems = [
- { name: "About us", href: "#about", hasDropdown: false },
- { name: "Services", href: "#services", hasDropdown: true },
- { name: "Portfolio", href: "#portfolio", hasDropdown: false },
+ { name: "About us", href: "/about", hasDropdown: false },
+ { name: "Services", href: "/services", hasDropdown: true },
+ { name: "Portfolio", href: "/portfolio", hasDropdown: false },
 ];
 
 // --- 1. FixedNavbar Component (Adapted and Fixed) ---
@@ -78,7 +78,7 @@ const NavItemLink: React.FC<{
    className="relative group h-full flex items-center"
    onMouseEnter={() => item.hasDropdown && setIsDropdownOpen(true)}
    onMouseLeave={() => item.hasDropdown && setIsDropdownOpen(false)}>
-   <a
+   <Link
     href={item.href}
     className={`flex items-center space-x-3  py-1 px-3 text-secondary font-bold hover:border-b-2 hover:border-secondary`}>
     <span>{item.name}</span>
@@ -88,17 +88,17 @@ const NavItemLink: React.FC<{
       className="transition-transform group-hover:rotate-180"
      />
     )}
-   </a>
+   </Link>
 
    {item.hasDropdown && isDropdownOpen && (
     <div className="absolute left-0 top-full mt-0 w-40 bg-white border border-gray-100 shadow-lg rounded-b-lg z-20 overflow-hidden">
      {dummyDropdown.map((subItem) => (
-      <a
+      <Link
        key={subItem.name}
        href={subItem.href}
        className="block px-4 py-2 text-sm font-bold text-gray-700 hover:bg-gray-100 transition-colors">
        {subItem.name}
-      </a>
+      </Link>
      ))}
     </div>
    )}
@@ -177,11 +177,11 @@ export const Navbar: React.FC = () => {
 
      <div className="flex w-full ">
       <Link
-      href="tel:+923011463337"
-      className={`mx-6 max-md:w-full bg-secondary text-white font-medium tracking-[0.4px] px-6 py-3 rounded-full shadow-lg transition-all duration-300  flex items-center justify-center space-x-2 text-md`}>
-      <Phone size={18} />
-      <span>Call Now</span>
-     </Link>
+       href="tel:+923011463337"
+       className={`mx-6 max-md:w-full bg-secondary text-white font-medium tracking-[0.4px] px-6 py-3 rounded-full shadow-lg transition-all duration-300  flex items-center justify-center space-x-2 text-md`}>
+       <Phone size={18} />
+       <span>Call Now</span>
+      </Link>
      </div>
     </div>
    </div>

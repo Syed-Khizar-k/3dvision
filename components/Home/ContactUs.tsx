@@ -4,40 +4,60 @@ import { motion } from "framer-motion";
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
 
 const ContactUs = () => {
- const [status, setStatus] = useState("idle");
- const [errorMsg, setErrorMsg] = useState("");
-
- const handleSubmit = async (e:any) => {
+ const [name, setName] = useState("");
+ const [email, setEmail] = useState("");
+ const [phone, setPhone] = useState("");
+ const [company, setCompany] = useState("");
+ const [projectType, setProjectType] = useState("");
+ const [message, setMessage] = useState("");
+ const [status, setStatus] = useState(""); // "idle", "loading", "success", "error"
+ const [error, setError] = useState(""); // For any errors during the submission
+ const [thankYouMessage, setThankYouMessage] = useState(""); // For success message
+ const reset = () => {
+  setName("");
+  setEmail("");
+  setPhone("");
+  setCompany("");
+  setProjectType("");
+  setMessage("");
+ };
+ const handleSubmit = async (e: any) => {
   e.preventDefault();
   setStatus("loading");
-  setErrorMsg("");
+  setError("");
+  setThankYouMessage(""); // Clear any previous messages
 
-  const formData = new FormData(e.target);
-  const payload = Object.fromEntries(formData.entries());
+  // Log form data to make sure it's being collected correctly
+  console.log(name, email, phone, company, projectType, message);
 
   try {
-   const res = await fetch("http://127.0.0.1:8000/api/contact/", {
+   const res = await fetch("/api/contact", {
     method: "POST",
-    headers: {
-     "Content-Type": "application/json",
-    },
-    body: JSON.stringify(payload),
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, email, phone, company, projectType, message }),
    });
 
-   if (!res.ok) {
-    const data = await res.json().catch(() => ({}));
-    setErrorMsg(data.error || "Something went wrong.");
-    setStatus("error");
-    return;
-   }
+   const result = await res.json(); // Parse JSON response from server
 
-   setStatus("success");
-   e.target.reset();
+   if (result.success) {
+    // If the response is successful (200 status)
+    setStatus("success");
+    setThankYouMessage(
+     "Thank you! Our team will contact you as soon as possible."
+    );
+    reset(); // Reset the form fields
+   } else {
+    // If the response is not successful (error status)
+    setStatus("error");
+    setError("Something went wrong.");
+   }
   } catch (err) {
-   setErrorMsg("Network error. Please try again.");
+   console.error("Error: ", err);
    setStatus("error");
+   setError("Network error. Please try again.");
   }
  };
+
  return (
   <section
    className="relative w-full py-20 bg-fixed bg-center bg-cover bg-no-repeat"
@@ -86,9 +106,7 @@ const ContactUs = () => {
      transition={{ duration: 0.6, ease: "easeOut" }}
      viewport={{ once: true }}
      className="md:w-1/2 w-full">
-     <form
-      onSubmit={handleSubmit}
-      className="bg-white/10 backdrop-blur-xs p-6 md:p-8 rounded-2xl border border-white/20 shadow-lg">
+     <form className="bg-white/10 backdrop-blur-xs p-6 md:p-8 rounded-2xl border border-white/20 shadow-lg">
       {/* Name & Email */}
       <div className="flex flex-col md:flex-row md:gap-6">
        <div className="mb-4 md:w-1/2">
@@ -98,6 +116,8 @@ const ContactUs = () => {
         <input
          type="text"
          name="name"
+         value={name}
+         onChange={(e) => setName(e.target.value)}
          required
          className="w-full p-3 rounded-xl bg-white/20 text-white placeholder-gray-300 border border-gray-400/40"
          placeholder="Enter your name"
@@ -111,6 +131,8 @@ const ContactUs = () => {
         <input
          type="email"
          name="email"
+         value={email}
+         onChange={(e) => setEmail(e.target.value)}
          required
          className="w-full p-3 rounded-xl bg-white/20 text-white placeholder-gray-300 border border-gray-400/40"
          placeholder="Enter your email"
@@ -129,6 +151,8 @@ const ContactUs = () => {
         required
         className="w-full p-3 rounded-xl bg-white/20 text-white placeholder-gray-300 border border-gray-400/40"
         placeholder="Enter your phone number"
+        value={phone}
+        onChange={(e) => setPhone(e.target.value)}
        />
       </div>
 
@@ -137,6 +161,8 @@ const ContactUs = () => {
        <div className="mb-4 md:w-1/2">
         <label className="block text-white mb-2 font-medium">Company</label>
         <input
+         value={company}
+         onChange={(e) => setCompany(e.target.value)}
          type="text"
          name="company"
          className="w-full p-3 rounded-xl bg-white/20 text-white placeholder-gray-300 border border-gray-400/40"
@@ -149,6 +175,8 @@ const ContactUs = () => {
          Project Type
         </label>
         <select
+         value={projectType}
+         onChange={(e) => setProjectType(e.target.value)}
          name="project-type"
          className="w-full p-3 rounded-xl bg-white/20 text-white border border-gray-400/40">
          <option value="">Select Project Type</option>
@@ -163,6 +191,8 @@ const ContactUs = () => {
       <div className="mb-6">
        <label className="block text-white mb-2 font-medium">Message</label>
        <textarea
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
         name="message"
         rows={4}
         required
@@ -173,16 +203,17 @@ const ContactUs = () => {
 
       {/* Status message */}
       {status === "success" && (
-       <p className="text-green-300 mb-2">✔ Message sent successfully!</p>
+       <p className="text-green-400 mb-2">{thankYouMessage}</p>
       )}
-      {status === "error" && <p className="text-red-300 mb-2">❌ {errorMsg}</p>}
+      {status === "error" && <p className="text-red-400 mb-2">{error}</p>}
 
       {/* Button */}
       <button
+       onClick={handleSubmit}
        type="submit"
        disabled={status === "loading"}
-       className="w-full bg-(--color-secondary) hover:bg-(--color-primary) disabled:opacity-50 text-white font-semibold py-3 rounded-xl transition">
-       {status === "loading" ? "Sending..." : "Submit"}
+       className="w-full bg-secondary disabled:opacity-50 text-white font-semibold py-3 rounded-xl transition">
+       {status === "loading" ? "Submitting..." : "Submit"}
       </button>
      </form>
     </motion.div>
