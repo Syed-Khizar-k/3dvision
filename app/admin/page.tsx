@@ -72,7 +72,7 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div className="flex min-h-screen bg-primary text-white">
+    <div className="flex min-h-screen bg-primary text-white max-md:pt-[70px]">
 
       {/* ---------- SIDEBAR ---------- */}
       <aside
