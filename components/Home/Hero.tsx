@@ -118,6 +118,9 @@ export const HeroSection: React.FC = () => {
      </span>
     </h1>
    </div>
+
+   {/* === BOTTOM WHITE GRADIENT === */}
+   <div className="absolute bottom-0 overflow-hidden left-0 w-full h-32 md:h-36 bg-gradient-to-t from-white to-transparent z-[999] pointer-events-none" />
   </section>
  );
 };

@@ -61,7 +61,7 @@ const socialLinks = [
 
 const Footer = () => {
  return (
-  <footer className="bg-secondary py-12 md:py-20 text-white">
+  <footer className="bg-[#5f6266] py-12 md:py-20 text-white">
    <div className="container mx-auto px-4">
     {/* Main Grid */}
     <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-[1fr_1fr_2fr_2fr] gap-10 md:gap-8">

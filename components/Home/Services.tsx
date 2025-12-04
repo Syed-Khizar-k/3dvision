@@ -52,20 +52,20 @@ const overlayVariants = {
 // Variant for the text color change
 const textVariants = {
  rest: {
-  color: "#4b5563", // text-gray-600
+  color: "var(--color-secondary)", // text-gray-600
  },
  hover: {
-  color: "var(--color-secondary)", // Your custom secondary color
+  color: "#4b5563", // Your custom secondary color
  },
 };
 
 // Variant for the title text color change (using a darker gray)
 const titleVariants = {
  rest: {
-  color: "#1f2937", // text-gray-800
+  color: "var(--color-secondary)", // text-gray-800
  },
  hover: {
-  color: "var(--color-secondary)", // Your custom secondary color
+  color: "#1f2937", // Your custom secondary color
  },
 };
 
