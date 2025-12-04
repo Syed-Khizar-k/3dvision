@@ -211,7 +211,6 @@ export default function AdminDashboard() {
         <p className="text-xs text-gray-500">
          {new Date(f.date).toLocaleString()}
         </p>
-
         <button
          className="w-full bg-red-600 text-white p-2 rounded mt-2"
          onClick={() => deleteSingle(f._id)}>

@@ -1,3 +1,4 @@
+import AboutComp from "@/components/about/AboutComp";
 import ContactUs from "@/components/Home/ContactUs";
 import Footer from "@/components/Home/Footer";
 import { Navbar } from "@/components/Home/Navbar";
@@ -9,10 +10,7 @@ const page = () => {
   <div className="min-h-screen antialiased">
    {/* 1. Fixed Navigation Bar (z-index 50 ensures it stays on top of the hero) */}
    <Navbar />
-
-   {/* 2. Full-Screen Hero Section */}
-   {/* <HeroSection /> */}
-
+   <AboutComp />
    <div>
     <Reviews />
     <ContactUs />

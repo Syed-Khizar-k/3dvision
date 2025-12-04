@@ -11,8 +11,9 @@ const PRIMARY_COLOR = "bg-[#A68C68]";
 const TEXT_COLOR = "text-[#2e3535]";
 
 const navItems = [
+ { name: "Home", href: "/", hasDropdown: false },
  { name: "About us", href: "/about", hasDropdown: false },
- { name: "Services", href: "/services", hasDropdown: true },
+ { name: "Services", href: "/services", hasDropdown: false },
  { name: "Portfolio", href: "/portfolio", hasDropdown: false },
 ];
 
@@ -141,6 +142,11 @@ export const Navbar: React.FC = () => {
       {navItems.map((item) => (
        <NavItemLink key={item.name} item={item} />
       ))}
+      {/* <Link
+       href="/admin"
+       className="ml-6 cursor-pointer font-bold text-[#2e3535]">
+       Dashboard
+      </Link> */}
 
       {/* CTA Button */}
      </div>
