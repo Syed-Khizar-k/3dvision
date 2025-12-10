@@ -107,7 +107,14 @@ const NavItemLink: React.FC<{
  );
 };
 
+import { usePathname } from "next/navigation";
+
 export const Navbar: React.FC = () => {
+ const pathname = usePathname();
+ const isAdmin = pathname?.startsWith("/admin");
+
+ if (isAdmin) return null;
+
  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
  const NAVBAR_BG_COLOR = "bg-gray-800/80 backdrop-blur-sm"; // Dark, slightly transparent background
  const LOGO_BG_COLOR = "bg-[#1e4d50]"; // Placeholder for the triangular logo background

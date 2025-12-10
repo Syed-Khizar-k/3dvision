@@ -8,18 +8,18 @@ import { ScrollSmoother } from "gsap/ScrollSmoother";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 export default function SmoothScroll() {
-  useEffect(() => {
-    const smoother = ScrollSmoother.create({
-      wrapper: "#smooth-wrapper",
-      content: "#smooth-content",
-      smooth: 1.1, // lower = tighter
-      effects: true,
-    });
+ useEffect(() => {
+  const smoother = ScrollSmoother.create({
+   wrapper: "#smooth-wrapper",
+   content: "#smooth-content",
+   smooth:2, // lower = tighter
+   effects: true,
+  });
 
-    return () => {
-      smoother.kill();
-    };
-  }, []);
+  return () => {
+   smoother.kill();
+  };
+ }, []);
 
-  return null;
+ return null;
 }

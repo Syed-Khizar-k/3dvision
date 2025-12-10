@@ -5,7 +5,7 @@ import { notFound, useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { ArrowLeft, MapPin, Calendar, User, Tag } from "lucide-react";
 import { PROJECTS } from "@/data/projects";
-import { Navbar } from "@/components/Home/Navbar";
+
 import Footer from "@/components/Home/Footer";
 
 const ProjectDetailsPage = () => {
@@ -19,8 +19,6 @@ const ProjectDetailsPage = () => {
 
  return (
   <div className="min-h-screen bg-stone-50 font-sans">
-   <Navbar />
-
    {/* Hero Section */}
    <div className="relative h-[60vh] md:h-[80vh] w-full ">
     <Image

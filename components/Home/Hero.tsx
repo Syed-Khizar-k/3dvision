@@ -21,7 +21,7 @@ export const HeroSection: React.FC = () => {
  }, [texts.length]);
 
  return (
-  <section className="relative w-full h-screen overflow-hidden bg-gray-900">
+  <section className="relative w-full h-screen overflow-hidden bg-white">
    {/* === TEXT FALL-BACK ANIMATION === */}
    <style>
     {`
@@ -120,7 +120,7 @@ export const HeroSection: React.FC = () => {
    </div>
 
    {/* === BOTTOM WHITE GRADIENT === */}
-   <div className="absolute bottom-0 overflow-hidden left-0 w-full h-32 md:h-36 bg-gradient-to-t from-white to-transparent z-[999] pointer-events-none" />
+   <div className="absolute -bottom-1 overflow-hidden left-0 w-full h-64 md:h-72 bg-gradient-to-t from-white to-transparent z-[999] pointer-events-none" />
   </section>
  );
 };

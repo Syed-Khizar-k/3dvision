@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/ui/SmoothScroll";
 import Watsaap from "@/components/ui/Watsaap";
+import { Navbar } from "@/components/Home/Navbar";
 
 const geistSans = Geist({
  variable: "--font-geist-sans",
@@ -97,6 +98,7 @@ export default function RootLayout({
 }>) {
  return (
   <html lang="en">
+   <Navbar />
    <Watsaap />
    <SmoothScroll />
    <body
