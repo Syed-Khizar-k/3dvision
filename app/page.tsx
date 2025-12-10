@@ -74,8 +74,8 @@ export default function Home() {
 
    {/* 2. Full-Screen Hero Section */}
    <HeroSection />
-
-   <div className="relative z-10 -mt-2">
+   <div className="absolute z-10 -mt-2 h-4 w-full bg-white"></div>
+   <div>
     <Intro />
     <Services />
     <Counter />
