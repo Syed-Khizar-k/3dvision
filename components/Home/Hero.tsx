@@ -102,8 +102,8 @@ export const HeroSection: React.FC = () => {
      className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] transition-opacity duration-1000 ${
       videoLoaded ? "opacity-100" : "opacity-0"
      }`}
-     src="https://www.youtube.com/embed/Jbvts0kdCo0?autoplay=1&mute=1&loop=1&playlist=Jbvts0kdCo0&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1"
-     allow="autoplay; encrypted-media"
+     src="https://www.youtube.com/embed/Jbvts0kdCo0?autoplay=1&mute=1&loop=1&playlist=Jbvts0kdCo0&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&playsinline=1"
+     allow="autoplay; encrypted-media; gyroscope; picture-in-picture"
      referrerPolicy="strict-origin-when-cross-origin"
     />
    </div>

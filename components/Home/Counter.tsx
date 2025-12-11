@@ -2,7 +2,7 @@
 import { CheckSquare, Heart, Users, Trophy } from "lucide-react";
 import CountUpContent from "../utils/CountUpContent";
 import { motion } from "framer-motion";
-import { useRef, useLayoutEffect } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -10,29 +10,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const CounterDefault = () => {
  const sectionRef = useRef<HTMLElement>(null);
- const bgRef = useRef<HTMLDivElement>(null);
 
- useLayoutEffect(() => {
-  const ctx = gsap.context(() => {
-   if (sectionRef.current && bgRef.current) {
-    ScrollTrigger.create({
-     trigger: sectionRef.current,
-     start: "top bottom",
-     end: "bottom top",
-     scrub: true, // Smooths the update if there's lag, but onUpdate is direct.
-    //  onUpdate: (self) => {
-    //   // Calculate the required translation to keep the background fixed relative to viewport
-    //   // y = scrollY - sectionOffsetTop
-    //   const scrollY = self.scroll();
-    //   const sectionTop = sectionRef.current?.offsetTop || 0;
-    //   gsap.set(bgRef.current, { y: scrollY - sectionTop });
-    //  },
-    });
-   }
-  }, sectionRef);
-
-  return () => ctx.revert();
- }, []);
+ // Native Fixed Background logic using CSS
 
  const counters = [
   {
@@ -58,22 +37,9 @@ const CounterDefault = () => {
  ];
 
  return (
-  <section ref={sectionRef} className="relative py-40 w-full overflow-hidden">
-   {/* Fixed Background Image Simulation */}
-   <div
-    ref={bgRef}
-    className="absolute top-0 left-0 w-full h-[100vh] z-0 pointer-events-none"
-    style={{
-     backgroundImage: "url('/images/experience.webp')",
-     backgroundPosition: "center",
-     backgroundSize: "cover",
-     backgroundRepeat: "no-repeat",
-     willChange: "transform",
-    }}
-   />
-
+  <section className="relative bg-fixed bg-cover bg-center bg-no-repeat bg-[url('/images/experience.webp')] py-40 w-full overflow-hidden">
    {/* Black Overlay */}
-   <div className="absolute inset-0 bg-black/30 z-0"></div>
+   <div className="absolute inset-0 bg-black/40 z-0"></div>
 
    {/* Counter Content */}
    <div className="container mx-auto relative z-10">

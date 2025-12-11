@@ -24,7 +24,7 @@ export default function WhatsAppButton() {
    href={link}
    target="_blank"
    rel="noopener noreferrer"
-   className="fixed bottom-6 right-6 z-50 bg-green-500 rounded-full p-4 shadow-lg hover:bg-green-600 transition">
+   className="fixed bottom-6 right-6 z-[99999999] bg-green-500 rounded-full p-4 shadow-lg hover:bg-green-600 transition">
    <FaWhatsapp className="text-white" size={32} />
   </Link>
  );

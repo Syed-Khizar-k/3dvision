@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, useLayoutEffect } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
 import gsap from "gsap";
@@ -9,27 +9,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ContactUs = () => {
  const sectionRef = useRef<HTMLElement>(null);
- const bgRef = useRef<HTMLDivElement>(null);
 
- useLayoutEffect(() => {
-  const ctx = gsap.context(() => {
-   if (sectionRef.current && bgRef.current) {
-    ScrollTrigger.create({
-     trigger: sectionRef.current,
-     start: "top bottom",
-     end: "bottom top",
-     scrub: true,
-     onUpdate: (self) => {
-      const scrollY = self.scroll();
-      const sectionTop = sectionRef.current?.offsetTop || 0;
-      gsap.set(bgRef.current, { y: scrollY - sectionTop });
-     },
-    });
-   }
-  }, sectionRef);
-
-  return () => ctx.revert();
- }, []);
+ // Native Fixed Background logic using CSS
+ // The 'bg-fixed' class handles the fixed background.
 
  const [name, setName] = useState("");
  const [email, setEmail] = useState("");
@@ -86,22 +68,11 @@ const ContactUs = () => {
  };
 
  return (
-  <section ref={sectionRef} className="relative w-full py-20 overflow-hidden">
-   {/* Fixed Background Image Simulation */}
-   <div
-    ref={bgRef}
-    className="absolute top-0 left-0 w-full h-[100vh] z-0 pointer-events-none"
-    style={{
-     backgroundImage: "url('/images/experience.webp')",
-     backgroundPosition: "center",
-     backgroundSize: "cover",
-     backgroundRepeat: "no-repeat",
-     willChange: "transform",
-    }}
-   />
-
+  <section
+   ref={sectionRef}
+   className="relative w-full bg-[url('/images/experience.webp')] bg-cover bg-center bg-fixed bg-no-repeat py-20 overflow-hidden">
    {/* Black overlay with slight transparency */}
-   <div className="absolute inset-0 bg-black/30 z-0"></div>
+   <div className="absolute inset-0 bg-black/40 z-0"></div>
 
    <div className="container mx-auto flex md:flex-row flex-col justify-center items-center gap-10 relative z-10 px-6">
     {/* LEFT SIDE */}
