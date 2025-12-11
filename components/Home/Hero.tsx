@@ -2,10 +2,10 @@
 import React, { useState, useEffect } from "react";
 
 export const HeroSection: React.FC = () => {
- const localVideoPath = "/videos/header.mp4";
  const texts = ["Visualization", "Animation", "360°VR"];
  const [currentIndex, setCurrentIndex] = useState(0);
  const [isAnimating, setIsAnimating] = useState(false);
+ const [videoLoaded, setVideoLoaded] = useState(false);
 
  useEffect(() => {
   const interval = setInterval(() => {
@@ -85,19 +85,27 @@ export const HeroSection: React.FC = () => {
    </style>
 
    {/* === FULL-SCREEN BACKGROUND VIDEO === */}
-   <div className="absolute inset-0 z-0 overflow-hidden">
-    <video
-     className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto object-cover -translate-x-1/2 -translate-y-1/2"
-     src={localVideoPath}
-     autoPlay
-     loop
-     muted
-     playsInline
-     webkit-playsinline="true"
-     preload="auto"
-     disablePictureInPicture>
-     Your browser does not support the video tag.
-    </video>
+   {/* === FULL-SCREEN BACKGROUND VIDEO === */}
+   <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+    {/* Placeholder Image */}
+    <img
+     src="/images/hero_placeholder.png"
+     alt="Hero Background"
+     className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+      videoLoaded ? "opacity-0" : "opacity-100"
+     }`}
+    />
+
+    {/* YouTube Iframe */}
+    <iframe
+     onLoad={() => setVideoLoaded(true)}
+     className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] transition-opacity duration-1000 ${
+      videoLoaded ? "opacity-100" : "opacity-0"
+     }`}
+     src="https://www.youtube.com/embed/Jbvts0kdCo0?autoplay=1&mute=1&loop=1&playlist=Jbvts0kdCo0&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1"
+     allow="autoplay; encrypted-media"
+     referrerPolicy="strict-origin-when-cross-origin"
+    />
    </div>
 
    {/* Overlay */}

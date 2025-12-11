@@ -98,13 +98,15 @@ export default function RootLayout({
 }>) {
  return (
   <html lang="en">
-   <Navbar />
-   <Watsaap />
    <SmoothScroll />
    <body
     className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white!`}>
     <div id="smooth-wrapper">
-     <div id="smooth-content"> {children}</div>
+     <div id="smooth-content">
+      <Watsaap />
+      <Navbar />
+      {children}
+     </div>
     </div>
    </body>
   </html>

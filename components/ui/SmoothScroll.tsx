@@ -12,7 +12,7 @@ export default function SmoothScroll() {
   const smoother = ScrollSmoother.create({
    wrapper: "#smooth-wrapper",
    content: "#smooth-content",
-   smooth:2, // lower = tighter
+   smooth: 1.1, // lower = tighter
    effects: true,
   });
 
