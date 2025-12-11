@@ -10,61 +10,31 @@ import ContactUs from "@/components/Home/ContactUs";
 import Intro from "@/components/Home/Intro";
 export const metadata: Metadata = {
  title:
-  "Top Interior Design & Architechture company in Lahore | 3D Vision Edge",
+  "Home | 3D Vision Edge - Top Interior Design & Architecture Firm Lahore",
  description:
-  "3D Vision Edge offers premium interior design, architecture, and construction services in Lahore. We deliver high-quality, transparent, and affordable solutions.",
+  "Transform your space with 3D Vision Edge. We offer top-tier interior design, architectural planning, and 3D visualization services in Lahore, Pakistan. Affordable, transparent, and premium quality.",
 
- // --- Canonical URL & Robots ---
- metadataBase: new URL("https://3dvisionedge.com"),
  alternates: {
-  canonical: "/",
- },
- robots: {
-  index: true,
-  follow: true,
-  googleBot: {
-   index: true,
-   follow: true,
-   "max-video-preview": -1,
-   "max-image-preview": "large",
-   "max-snippet": -1,
-  },
+  canonical: "https://3dvisionedge.com",
  },
 
- // --- Open Graph (for Social Sharing - Facebook, LinkedIn) ---
  openGraph: {
-  title: "3D Vision Edge | Interior Design, Architecture & Construction",
+  title: "3D Vision Edge | Best Interior Design & Architecture in Lahore",
   description:
-   "Transforming spaces with high-quality, transparent, and affordable design and construction services in Lahore.",
+   "Expert interior designers and architects in Lahore delivering luxury home renovation, commercial design, and 3D visualization services.",
   url: "https://3dvisionedge.com",
   siteName: "3D Vision Edge",
   images: [
    {
-    url: "https://3dvisionedge.com/images/social-preview.jpg", // You must create this image
+    url: "/logo.jpg",
     width: 1200,
     height: 630,
-    alt: "A stunning interior design project by 3D Vision Edge",
+    alt: "3D Vision Edge Interior Design Portfolio",
    },
   ],
   locale: "en_US",
   type: "website",
  },
-
- // --- Other Tags ---
- keywords: [
-  "Interior Design Lahore",
-  "Interior Designers Lahore",
-  "Architechture company Lahore",
-  "Architecture Design Pakistan",
-  "3D Vision Edge",
-  "3d vision edge ",
-  "vision edge",
-  "Interior Decoration Lahore",
-  "Home Renovation Lahore",
-  "Commercial Interior Design",
-  "Furniture Design Lahore",
- ],
- authors: [{ name: "3D Vision Edge" }],
 };
 
 export default function Home() {

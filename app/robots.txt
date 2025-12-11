@@ -1,0 +1,12 @@
+import { MetadataRoute } from "next";
+
+export default function robots(): MetadataRoute.Robots {
+ return {
+  rules: {
+   userAgent: "*",
+   allow: "/",
+   disallow: "/admin/", // Protect admin routes if any
+  },
+  sitemap: "https://3dvisionedge.com/sitemap.xml",
+ };
+}

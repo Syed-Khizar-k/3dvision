@@ -7,13 +7,13 @@ function Intro() {
  return (
   <section className="md:pt-[140px] md:pb-10 pt-[100px] pb-[50px] w-full bg-white">
    <div className="container mx-auto px-4">
-    <h1 className="text-heading px-4 text-[28px] leading-[33px]  md:px-[100px] md:text-[52px] md:leading-[58px] font-bold tracking-[-1px] text-center capitalize">
+    <h2 className="text-heading px-4 text-[28px] leading-[33px]  md:px-[100px] md:text-[52px] md:leading-[58px] font-bold tracking-[-1px] text-center capitalize">
      {" "}
      <OpacityTextReveal>
       We create breathtaking visual representations of architectural concepts
       that effectively communicate with your target audience
      </OpacityTextReveal>
-    </h1>
+    </h2>
     <div className="flex justify-center py-6 md:pt-12 lg:space-x-2 h-full items-center">
      <Link
       href="tel:+923011463337"

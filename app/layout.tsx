@@ -18,60 +18,68 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
  metadataBase: new URL("https://3dvisionedge.com"),
 
- title:
-  "3D Vision Edge – Best 3D Architectural Visualization & Rendering Studio in Pakistan",
+ title: {
+  default: "3D Vision Edge | Best 3D Visualization & Interior Design Studio",
+  template: "%s | 3D Vision Edge", // Proper templating for inner pages
+ },
 
  description:
-  "3D Vision Edge provides high-end 3D architectural visualization, interior & exterior rendering, walkthrough animations, and real-estate CGI services. Trusted by architects, builders, and developers across Lahore and Pakistan for ultra-realistic digital design experiences.",
+  "Premier 3D Architectural Visualization & Interior Design Studio in Lahore, Pakistan. We specialize in photorealistic 3D rendering, animation, VR walkthroughs, and architectural planning for real estate developers and architects.",
 
  keywords: [
-  "3D vision edge",
-  "3d vision edge lahore",
-  "3d vision edge pakistan",
-  "vision edge ",
-  "3d architectural visualization",
-  "#1 3d visiualzers in pakistan",
-  "3D visualization Lahore",
-  "3d rendering services Pakistan",
-  "architectural rendering Pakistan",
-  "3D exterior design",
-  "interior 3D visualization",
-  "CGI real estate Pakistan",
-  "3D animation services Lahore",
-  "3D walkthrough",
-  "3D floor plans",
-  "3d model render studio",
-  "render farm Pakistan",
-  "property visualization",
-  "architectural CGI services",
+  // Brand
+  "3D Vision Edge",
+  "3DVisionEdge",
+  "Vision Edge",
+
+  // Core Services
+  "3D Architectural Visualization",
+  "3D Rendering Services",
+  "Interior Design Lahore",
+  "Architectural Animation",
+  "3D Floor Plans",
+  "3D Modeling Company",
+  "Real Estate CGI",
+
+  // Location Based
+  "Best Architects in Lahore",
+  "Interior Designers DHA Lahore",
+  "3D Visualizer Pakistan",
+  "Construction Services Lahore",
+
+  // Niche / Long-tail
+  "Photorealistic exterior rendering",
+  "3D walkthrough animation services",
+  "Commercial interior design firm",
+  "House map design 3D",
+  "Virtual Reality Architecture",
+  "4K Architectural Renders",
  ],
 
  openGraph: {
-  title:
-   "3D Vision Edge – Pakistan’s Leading 3D Architectural Visualization Studio",
+  title: "3D Vision Edge | Transforming Blueprints into Reality",
   description:
-   "We transform architectural concepts into photo-realistic 3D visuals, CGI renders, animations, and walkthroughs. Serving architects, real estate developers, and interior designers.",
+   "Leading 3D visualization studio offering high-end interior design, architectural rendering, and walkthrough animations. Elevate your real estate projects with 3D Vision Edge.",
   url: "https://3dvisionedge.com",
   siteName: "3D Vision Edge",
   locale: "en_US",
   type: "website",
   images: [
    {
-    url: "https://3dvisionedge.com/logo.jpg",
+    url: "/images/og-image.jpg", // Ensure this exists or fallback to logo
     width: 1200,
     height: 630,
-    alt: "3D Vision Edge – Architectural Visualization Studio",
+    alt: "3D Vision Edge - Premium Architectural Visualization",
    },
   ],
  },
 
  twitter: {
   card: "summary_large_image",
-  title:
-   "3D Vision Edge – Premium 3D Visualization & Rendering Services in Lahore",
+  title: "3D Vision Edge | Premium 3D Visualization Services",
   description:
-   "We deliver ultra-realistic architectural rendering, interior/exterior CGI, and 3D animations for real estate & construction projects.",
-  images: ["https://3dvision.vercel.app/og-image.jpg"],
+   "Expert 3D rendering and interior design services in Pakistan. Bringing architectural visions to life.",
+  images: ["/images/og-image.jpg"],
  },
 
  alternates: {
@@ -85,10 +93,13 @@ export const metadata: Metadata = {
   googleBot: {
    index: true,
    follow: true,
+   "max-video-preview": -1,
+   "max-image-preview": "large",
+   "max-snippet": -1,
   },
  },
 
- category: "Architecture, 3D Visualization, CGI Services",
+ category: "Design",
 };
 
 export default function RootLayout({
@@ -96,8 +107,55 @@ export default function RootLayout({
 }: Readonly<{
  children: React.ReactNode;
 }>) {
+ // JSON-LD Structured Data for Local Business
+ const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "3D Vision Edge",
+  image: "https://3dvisionedge.com/logo.jpg",
+  url: "https://3dvisionedge.com",
+  telephone: "+923011463337",
+  priceRange: "$$",
+  address: {
+   "@type": "PostalAddress",
+   streetAddress: "DHA Phase 6",
+   addressLocality: "Lahore",
+   addressRegion: "Punjab",
+   postalCode: "54000",
+   addressCountry: "PK",
+  },
+  geo: {
+   "@type": "GeoCoordinates",
+   latitude: 31.48, // Approximate for DHA Phase 6
+   longitude: 74.45,
+  },
+  openingHoursSpecification: {
+   "@type": "OpeningHoursSpecification",
+   dayOfWeek: [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+   ],
+   opens: "09:00",
+   closes: "21:00",
+  },
+  sameAs: [
+   "https://www.facebook.com/3dvisionedge",
+   "https://www.instagram.com/3dvisionedge",
+  ],
+ };
+
  return (
   <html lang="en">
+   <head>
+    <script
+     type="application/ld+json"
+     dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+   </head>
    <body
     className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white!`}>
     <div className="relative">
