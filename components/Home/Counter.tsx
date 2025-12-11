@@ -20,13 +20,13 @@ const CounterDefault = () => {
      start: "top bottom",
      end: "bottom top",
      scrub: true, // Smooths the update if there's lag, but onUpdate is direct.
-     onUpdate: (self) => {
-      // Calculate the required translation to keep the background fixed relative to viewport
-      // y = scrollY - sectionOffsetTop
-      const scrollY = self.scroll();
-      const sectionTop = sectionRef.current?.offsetTop || 0;
-      gsap.set(bgRef.current, { y: scrollY - sectionTop });
-     },
+    //  onUpdate: (self) => {
+    //   // Calculate the required translation to keep the background fixed relative to viewport
+    //   // y = scrollY - sectionOffsetTop
+    //   const scrollY = self.scroll();
+    //   const sectionTop = sectionRef.current?.offsetTop || 0;
+    //   gsap.set(bgRef.current, { y: scrollY - sectionTop });
+    //  },
     });
    }
   }, sectionRef);
