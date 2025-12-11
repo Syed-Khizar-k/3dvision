@@ -37,10 +37,10 @@ const NavItemLink: React.FC<{
  // Mobile rendering
  if (isMobile) {
   return (
-   <div className="w-full">
-    <a
+   <div className="w-full ">
+    <Link
      href={item.href}
-     className={`flex justify-between items-center w-full px-4 py-3 text-sm hover:bg-gray-700`}
+     className={`flex justify-between items-center text-white w-full px-4 py-3 text-sm hover:bg-gray-700`}
      onClick={
       item.hasDropdown
        ? (e) => {
@@ -56,16 +56,16 @@ const NavItemLink: React.FC<{
        className={`transition-transform ${isDropdownOpen ? "rotate-180" : ""}`}
       />
      )}
-    </a>
+    </Link>
     {item.hasDropdown && isDropdownOpen && (
      <div className="bg-gray-800 border-t border-gray-700">
       {dummyDropdown.map((subItem) => (
-       <a
+       <Link
         key={subItem.name}
         href={subItem.href}
         className="block px-8 py-2 text-xs text-gray-300 hover:bg-gray-700">
         {subItem.name}
-       </a>
+       </Link>
       ))}
      </div>
     )}
@@ -135,7 +135,7 @@ export const Navbar: React.FC = () => {
  );
 
  return (
-  <header className={`fixed top-6 left-0 w-full z-50 px-6 `}>
+  <header className={`fixed top-6 left-0 w-full z-[100] px-6 `}>
    <nav
     className={`max-w-4xl mx-auto px-2 sm:px-4 lg:px-2 h-16 flex items-center bg-primary rounded-full`}>
     <div className="flex justify-between items-center w-full">
@@ -190,7 +190,7 @@ export const Navbar: React.FC = () => {
 
      <div className="flex w-full ">
       <Link
-       href="tel:+923011463337"
+       href="tel:03011463337"
        className={`mx-6 max-md:w-full bg-secondary text-white font-medium tracking-[0.4px] px-6 py-3 rounded-full shadow-lg transition-all duration-300  flex items-center justify-center space-x-2 text-md`}>
        <Phone size={18} />
        <span>Call Now</span>
