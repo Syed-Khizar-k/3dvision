@@ -50,7 +50,7 @@ const VirtualRealityComp = () => {
     {/* Background Image with Overlay */}
     <div className="absolute inset-0 z-0">
      <Image
-      src="/images/vr/vr1.webp"
+      src="/images/vr/vr1.jpg"
       alt="Virtual Reality Tours Hero"
       fill
       className="object-cover"
