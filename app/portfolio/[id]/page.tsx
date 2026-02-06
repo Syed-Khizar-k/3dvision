@@ -5,6 +5,7 @@ import { notFound, useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { ArrowLeft, MapPin, Calendar, User, Tag } from "lucide-react";
 import { PROJECTS } from "@/data/projects";
+import DynamicGridLayout from "@/components/portfolio/DynamicGridLayout";
 
 import Footer from "@/components/Home/Footer";
 
@@ -145,25 +146,33 @@ const ProjectDetailsPage = () => {
     </div>
 
     {/* Gallery Section */}
-    <div className="space-y-8">
-     <h2 className="text-3xl font-bold text-heading mb-8">Project Gallery</h2>
-     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {project.images.map((img, index) => (
-       <div
-        key={index}
-        className={`relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 ${
-         index === 0 ? "md:col-span-2 h-[500px]" : "h-[400px]"
-        }`}>
-        <Image
-         src={img}
-         alt={`${project.title} - Image ${index + 1}`}
-         fill
-         className="object-cover hover:scale-105 transition-transform duration-700"
-        />
-       </div>
-      ))}
+    {project.sections && project.sections.length > 0 ? (
+     // Use dynamic grid layout for projects with sections
+     <div className="mb-24">
+      <DynamicGridLayout sections={project.sections} />
      </div>
-    </div>
+    ) : (
+     // Fallback to traditional gallery for projects without sections
+     <div className="space-y-8">
+      <h2 className="text-3xl font-bold text-heading mb-8">Project Gallery</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+       {project.images.map((img, index) => (
+        <div
+         key={index}
+         className={`relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 ${
+          index === 0 ? "md:col-span-2 h-[500px]" : "h-[400px]"
+         }`}>
+         <Image
+          src={img}
+          alt={`${project.title} - Image ${index + 1}`}
+          fill
+          className="object-cover hover:scale-105 transition-transform duration-700"
+         />
+        </div>
+       ))}
+      </div>
+     </div>
+    )}
    </div>
 
    <Footer />

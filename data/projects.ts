@@ -1,5 +1,10 @@
 export type Category = "All" | "Architecture" | "Interior" | "Commercial";
 
+export interface ProjectSection {
+ name: string;
+ images: string[];
+}
+
 export interface Project {
  id: number;
  title: string;
@@ -8,6 +13,7 @@ export interface Project {
  description: string;
  // Detailed fields
  images: string[];
+ sections?: ProjectSection[]; // Optional for backward compatibility
  longDescription: string;
  client: string;
  location: string;
@@ -142,5 +148,54 @@ export const PROJECTS: Project[] = [
    "The client wanted a headquarters that would serve as a brand statement and attract top talent. The building needed to be energy-efficient and technologically advanced.",
   solution:
    "We incorporated a smart building management system that optimizes energy use based on occupancy. The facade features dynamic LED lighting that can be programmed to display different patterns and colors.",
+ },
+ {
+  id: 7,
+  title: "10 Marla House",
+  category: "Architecture",
+  image: "/images/experience.webp",
+  description:
+   "Modern family home with elegant interiors and thoughtful spaces.",
+  images: [
+   "/images/experience.webp",
+   "/images/contact.webp",
+   "/images/why.jpg",
+  ],
+  sections: [
+   {
+    name: "Bathroom",
+    images: ["/images/contact.webp", "/images/why.jpg"],
+   },
+   {
+    name: "Bedroom",
+    images: [
+     "/images/experience.webp",
+     "/images/contact.webp",
+     "/images/why.jpg",
+    ],
+   },
+     {
+    name: "Bedroom",
+    images: [
+     "/images/experience.webp",
+     "/images/contact.webp",
+     "/images/why.jpg",
+    ],
+   },
+  
+   {
+    name: "TV Lounge",
+    images: ["/images/why.jpg", "/images/experience.webp"],
+   },
+  ],
+  longDescription:
+   "This 10 Marla house showcases modern architectural design with a focus on family living. Each room is carefully designed to maximize space, natural light, and functionality while maintaining a cohesive aesthetic throughout the home.",
+  client: "Private Family",
+  location: "Lahore, Pakistan",
+  year: "2024",
+  challenge:
+   "The challenge was to create a spacious feeling within a standard 10 Marla plot while incorporating all the modern amenities and spaces the family required, including dedicated areas for entertainment, relaxation, and privacy.",
+  solution:
+   "We implemented an open-concept design for the ground floor to create flow between spaces, while maintaining privacy in the bedroom areas. Large windows and glass doors were strategically placed to bring in natural light and create a connection with the outdoor spaces.",
  },
 ];
