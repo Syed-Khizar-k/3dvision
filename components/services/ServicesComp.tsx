@@ -1,5 +1,7 @@
 "use client";
 
+import ServicesCarousel from "./ServicesCarousel";
+
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -12,6 +14,7 @@ import {
  Hammer,
  ArrowRight,
 } from "lucide-react";
+import Link from "next/link";
 
 // --- Data ---
 const SERVICES = [
@@ -65,7 +68,12 @@ const GALLERY_IMAGES = [
  "/images/why.jpg",
  "/images/experience.webp",
 ];
+const phoneNumber = "923011463337"; // Use international format without + or 00
+const message = "Hello! I want to discuss a project.";
 
+// We must encode the message to handle spaces and special characters
+const encodedMessage = encodeURIComponent(message);
+const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 const ServicesComp = () => {
  return (
   <div className="bg-stone-50 min-h-screen font-sans">
@@ -121,31 +129,7 @@ const ServicesComp = () => {
      </p>
     </div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-     {SERVICES.map((service, index) => (
-      <motion.div
-       key={index}
-       initial={{ opacity: 0, y: 20 }}
-       whileInView={{ opacity: 1, y: 0 }}
-       viewport={{ once: true }}
-       transition={{ delay: index * 0.1 }}
-       className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group border border-gray-100">
-       <div className="w-14 h-14 bg-stone-100 rounded-xl flex items-center justify-center text-heading mb-6 group-hover:bg-heading group-hover:text-white transition-colors duration-300">
-        {service.icon}
-       </div>
-       <h3 className="text-xl font-bold text-heading mb-3 group-hover:text-primary transition-colors">
-        {service.title}
-       </h3>
-       <p className="text-gray-600 leading-relaxed mb-6">
-        {service.description}
-       </p>
-       <div className="flex items-center text-sm font-semibold text-primary group-hover:translate-x-2 transition-transform cursor-pointer">
-        <span>Learn More</span>
-        <ArrowRight size={16} className="ml-2" />
-       </div>
-      </motion.div>
-     ))}
-    </div>
+    <ServicesCarousel services={SERVICES} />
    </section>
 
    {/* --- Gallery Section --- */}
@@ -179,8 +163,8 @@ const ServicesComp = () => {
          index === 0 || index === 5
           ? "md:col-span-2 md:row-span-2"
           : index === 2 || index === 7
-          ? "md:row-span-2"
-          : ""
+            ? "md:row-span-2"
+            : ""
         }`}>
         <Image
          src={src}
@@ -205,9 +189,13 @@ const ServicesComp = () => {
       Let's collaborate to create something extraordinary. Contact us today for
       a consultation.
      </p>
-     <button className="bg-white text-heading px-8 py-4 cursor-pointer rounded-full font-bold text-lg hover:bg-primary hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+     <Link
+      href={whatsappUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="bg-white text-heading px-8 py-4 cursor-pointer rounded-full font-bold text-lg hover:bg-primary hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
       Get in Touch
-     </button>
+     </Link>
     </div>
    </section>
   </div>

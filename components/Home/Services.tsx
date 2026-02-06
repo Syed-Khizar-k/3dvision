@@ -68,7 +68,10 @@ const titleVariants = {
   color: "#1f2937", // Your custom secondary color
  },
 };
-
+const phoneNumber = "03011463337"; // Use international format without + or 00
+const message = "Hello! I Want Some Discussion on my project.";
+const encodedMessage = encodeURIComponent(message);
+const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 const Services = () => {
  // NOTE: I also fixed your custom CSS variable classes
  // from text-(--color-secondary) to text-[var(--color-secondary)]

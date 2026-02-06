@@ -12,6 +12,7 @@ import {
  Armchair,
  ArrowRight,
 } from "lucide-react";
+import Link from "next/link";
 
 // --- Data ---
 const STATS = [
@@ -58,6 +59,10 @@ const EXPERTISE = [
  },
 ];
 
+const phoneNumber = "923011463337"; // Use international format without + or 00
+const message = "Hello! I Want Some Discussion on my project.";
+const encodedMessage = encodeURIComponent(message);
+const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 const AboutComp = () => {
  return (
   <div className="bg-stone-50 min-h-screen font-sans">
@@ -234,9 +239,13 @@ const AboutComp = () => {
         "We don't just design spaces; we create experiences that inspire and
         endure."
        </p>
-       <button className="bg-white text-heading px-8 py-4 cursor-pointer rounded-full font-bold text-lg hover:bg-primary hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 inline-flex items-center">
+       <Link
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bg-white text-heading px-8 py-4 cursor-pointer rounded-full font-bold text-lg hover:bg-primary hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 inline-flex items-center">
         Start Your Project <ArrowRight className="ml-2" size={20} />
-       </button>
+       </Link>
       </div>
      </div>
     </div>

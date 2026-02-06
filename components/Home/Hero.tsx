@@ -144,7 +144,7 @@ export const HeroSection: React.FC = () => {
    </div>
 
    {/* === BOTTOM WHITE GRADIENT === */}
-   <div className="absolute -bottom-1 overflow-hidden left-0 w-full h-64 md:h-72 bg-gradient-to-t from-white to-transparent z-[999] pointer-events-none" />
+   <div className="absolute -bottom-1 overflow-hidden left-0 w-full h-64 md:h-72 bg-gradient-to-t from-white to-transparent z-[10] pointer-events-none" />
   </section>
  );
 };

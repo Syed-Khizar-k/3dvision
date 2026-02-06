@@ -1,8 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 // --- Configuration & Data ---
 
@@ -13,7 +14,12 @@ const TEXT_COLOR = "text-[#2e3535]";
 const navItems = [
  { name: "Home", href: "/", hasDropdown: false },
  { name: "About us", href: "/about", hasDropdown: false },
- { name: "Services", href: "/services", hasDropdown: false },
+ {
+  name: "Services",
+  href: "/services",
+  hasDropdown: true,
+  dropdownItems: [{ name: "Virtual Reality", href: "/virtual-reality" }],
+ },
  { name: "Portfolio", href: "/portfolio", hasDropdown: false },
 ];
 
@@ -22,15 +28,13 @@ const navItems = [
 const NavItemLink: React.FC<{
  item: (typeof navItems)[0];
  isMobile?: boolean;
-}> = ({ item, isMobile = false }) => {
+ closeMobileMenu?: () => void;
+}> = ({ item, isMobile = false, closeMobileMenu }) => {
  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
- // Placeholder dropdown items for Services
- const dummyDropdown = [
-  { name: "Architecture", href: "#arch" },
-  { name: "Interior Design", href: "#int" },
-  { name: "Visualization", href: "#viz" },
- ];
+ // Get dropdown items from the item config
+ const dropdownItems =
+  item.hasDropdown && "dropdownItems" in item ? item.dropdownItems : [];
 
  const baseClasses = `font-bold hover:text-blue-400 hover:border-b-2 py-2 transition-colors text-white`;
 
@@ -57,18 +61,22 @@ const NavItemLink: React.FC<{
       />
      )}
     </Link>
-    {item.hasDropdown && isDropdownOpen && (
-     <div className="bg-gray-800 border-t border-gray-700">
-      {dummyDropdown.map((subItem) => (
-       <Link
-        key={subItem.name}
-        href={subItem.href}
-        className="block px-8 py-2 text-xs text-gray-300 hover:bg-gray-700">
-        {subItem.name}
-       </Link>
-      ))}
-     </div>
-    )}
+    {item.hasDropdown &&
+     isDropdownOpen &&
+     dropdownItems &&
+     dropdownItems.length > 0 && (
+      <div className="bg-gray-800 border-t border-gray-700">
+       {dropdownItems.map((subItem) => (
+        <Link
+         key={subItem.name}
+         href={subItem.href}
+         className="block px-8 py-2 text-xs text-gray-300 hover:bg-gray-700"
+         onClick={() => closeMobileMenu?.()}>
+         {subItem.name}
+        </Link>
+       ))}
+      </div>
+     )}
    </div>
   );
  }
@@ -91,23 +99,24 @@ const NavItemLink: React.FC<{
     )}
    </Link>
 
-   {item.hasDropdown && isDropdownOpen && (
-    <div className="absolute left-0 top-full mt-0 w-40 bg-white border border-gray-100 shadow-lg rounded-b-lg z-20 overflow-hidden">
-     {dummyDropdown.map((subItem) => (
-      <Link
-       key={subItem.name}
-       href={subItem.href}
-       className="block px-4 py-2 text-sm font-bold text-gray-700 hover:bg-gray-100 transition-colors">
-       {subItem.name}
-      </Link>
-     ))}
-    </div>
-   )}
+   {item.hasDropdown &&
+    isDropdownOpen &&
+    dropdownItems &&
+    dropdownItems.length > 0 && (
+     <div className="absolute left-0 md:h-20 top-full mt-0 w-48 bg-white border border-gray-100 shadow-lg rounded-b-lg z-20 overflow-hidden">
+      {dropdownItems.map((subItem) => (
+       <Link
+        key={subItem.name}
+        href={subItem.href}
+        className="block px-4 pt-4 pb-2 text-sm font-bold text-gray-700 hover:bg-gray-100 transition-colors">
+        {subItem.name}
+       </Link>
+      ))}
+     </div>
+    )}
   </div>
  );
 };
-
-import { usePathname } from "next/navigation";
 
 export const Navbar: React.FC = () => {
  const pathname = usePathname();
@@ -116,8 +125,34 @@ export const Navbar: React.FC = () => {
  if (isAdmin) return null;
 
  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+ const mobileMenuRef = useRef<HTMLDivElement>(null);
  const NAVBAR_BG_COLOR = "bg-gray-800/80 backdrop-blur-sm"; // Dark, slightly transparent background
  const LOGO_BG_COLOR = "bg-[#1e4d50]"; // Placeholder for the triangular logo background
+
+ // Close mobile menu when clicking outside
+ useEffect(() => {
+  const handleClickOutside = (event: MouseEvent) => {
+   if (
+    mobileMenuRef.current &&
+    !mobileMenuRef.current.contains(event.target as Node)
+   ) {
+    setIsMobileMenuOpen(false);
+   }
+  };
+
+  if (isMobileMenuOpen) {
+   document.addEventListener("mousedown", handleClickOutside);
+  }
+
+  return () => {
+   document.removeEventListener("mousedown", handleClickOutside);
+  };
+ }, [isMobileMenuOpen]);
+
+ // Close mobile menu when navigating to a new page
+ useEffect(() => {
+  setIsMobileMenuOpen(false);
+ }, [pathname]);
 
  const Logo = () => (
   <div
@@ -135,7 +170,9 @@ export const Navbar: React.FC = () => {
  );
 
  return (
-  <header className={`fixed top-6 left-0 w-full z-[100] px-6 `}>
+  <header
+   className={`fixed top-6 left-0 w-full z-50 px-6 `}
+   ref={mobileMenuRef}>
    <nav
     className={`max-w-4xl mx-auto px-2 sm:px-4 lg:px-2 h-16 flex items-center bg-primary rounded-full`}>
     <div className="flex justify-between items-center w-full">
@@ -184,7 +221,12 @@ export const Navbar: React.FC = () => {
     style={{ transitionProperty: "max-height, opacity" }}>
     <div className="pb-3 pt-2 space-y-1 border-t border-gray-700">
      {navItems.map((item) => (
-      <NavItemLink key={item.name} item={item} isMobile={true} />
+      <NavItemLink
+       key={item.name}
+       item={item}
+       isMobile={true}
+       closeMobileMenu={() => setIsMobileMenuOpen(false)}
+      />
      ))}
      {/* Mobile CTA */}
 

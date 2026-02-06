@@ -31,6 +31,10 @@ const ContactUs = () => {
   setMessage("");
  };
  const handleSubmit = async (e: any) => {
+  if (!name || !email || !phone || !company || !projectType || !message) {
+   setError("Please fill all the fields");
+   return;
+  }
   e.preventDefault();
   setStatus("loading");
   setError("");
@@ -52,7 +56,7 @@ const ContactUs = () => {
     // If the response is successful (200 status)
     setStatus("success");
     setThankYouMessage(
-     "Thank you! Our team will contact you as soon as possible."
+     "Thank you! Our team will contact you as soon as possible.",
     );
     reset(); // Reset the form fields
    } else {
@@ -219,7 +223,9 @@ const ContactUs = () => {
 
       {/* Message */}
       <div className="mb-6">
-       <label className="block text-white mb-2 font-medium">Message</label>
+       <label className="block text-white mb-2 font-medium">
+        Message <span className="text-red-500">*</span>
+       </label>
        <textarea
         value={message}
         onChange={(e) => setMessage(e.target.value)}

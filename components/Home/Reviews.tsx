@@ -249,7 +249,7 @@ const TestimonialCarousel: React.FC = () => {
      onMouseLeave={handleMouseLeave}>
      <div
       ref={carouselRef}
-      className="flex w-full cursor-grab active:cursor-grabbing transition-transform duration-500 ease-in-out"
+      className="flex w-full cursor-grab active:cursor-grabbing transition-transform duration-500 ease-in-out select-none"
       style={{ transform: transformValue }}
       onMouseDown={handleDragStart}
       onTouchStart={handleDragStart}>
