@@ -91,7 +91,7 @@ const Services = () => {
      <p className="text-lg text-(--color-secondary) md:text-md">
       Our commitment to quality products and on time services ensure our clients{" "}
       <br />
-      happy. We're happy to make you feel more comfortable on your home.
+      happy. We’re happy to make you feel more comfortable on your home.
      </p>
     </div>
 
@@ -161,39 +161,6 @@ const Services = () => {
       </motion.div>
      ))}
     </div>
-
-    {/* Call to Action Button */}
-    <motion.div
-     initial={{ opacity: 0, y: 50 }}
-     whileInView={{ opacity: 1, y: 0 }}
-     transition={{ duration: 0.8, ease: "easeOut" }}
-     viewport={{ once: true }}
-     className="flex justify-center mt-12">
-     <Link
-      href="/virtual-reality"
-      className="group relative inline-flex items-center gap-3 bg-secondary hover:bg-secondary  text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 overflow-hidden shadow-lg hover:shadow-2xl">
-      <span className="relative z-10">Virtual Reality Tours</span>
-      <svg
-       className="relative z-10 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
-       fill="none"
-       viewBox="0 0 24 24"
-       stroke="currentColor">
-       <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M17 8l4 4m0 0l-4 4m4-4H3"
-       />
-      </svg>
-      {/* Hover overlay effect */}
-      <motion.div
-       className="absolute inset-0 bg-gradient-to-r from-primary to-secondary"
-       initial={{ x: "-100%" }}
-       whileHover={{ x: "0%" }}
-       transition={{ duration: 0.3, ease: "easeInOut" }}
-      />
-     </Link>
-    </motion.div>
    </div>
   </section>
  );
